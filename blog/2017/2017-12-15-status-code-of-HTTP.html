@@ -1,0 +1,1362 @@
+<!DOCTYPE html><html>
+
+<head>
+<meta charset="utf-8">
+<title>index</title>
+<style>
+@font-face {
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+body {
+  background-color: white;
+}
+
+.markdown-body {
+  min-width: 200px;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 20px;
+
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;;word-wrap: break-word; word-break: break-all;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px/1.4 Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before {
+  display: table;
+  content: "";
+}
+
+.markdown-body hr:after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code {
+  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  border-radius: 2px;
+  border: 1px solid #cfcfcf;
+  color: #000;
+  padding: 3px 5px;
+  line-height: 10px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  display: inline-block;
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .anchor {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+
+.markdown-body .anchor:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .octicon-link,
+.markdown-body h2 .octicon-link,
+.markdown-body h3 .octicon-link,
+.markdown-body h4 .octicon-link,
+.markdown-body h5 .octicon-link,
+.markdown-body h6 .octicon-link {
+  display: none;
+  color: #000;
+  vertical-align: middle;
+}
+
+.markdown-body h1:hover .anchor,
+.markdown-body h2:hover .anchor,
+.markdown-body h3:hover .anchor,
+.markdown-body h4:hover .anchor,
+.markdown-body h5:hover .anchor,
+.markdown-body h6:hover .anchor {
+  height: 1em;
+  padding-left: 8px;
+  margin-left: -30px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .anchor .octicon-link,
+.markdown-body h2:hover .anchor .octicon-link,
+.markdown-body h3:hover .anchor .octicon-link,
+.markdown-body h4:hover .anchor .octicon-link,
+.markdown-body h5:hover .anchor .octicon-link,
+.markdown-body h6:hover .anchor .octicon-link {
+  display: inline-block;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .highlight {
+  margin-bottom: 16px;
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+.markdown-body .highlight {
+  background: #fff;
+}
+
+.markdown-body .highlight .mf,
+.markdown-body .highlight .mh,
+.markdown-body .highlight .mi,
+.markdown-body .highlight .mo,
+.markdown-body .highlight .il,
+.markdown-body .highlight .m {
+  color: #945277;
+}
+
+.markdown-body .highlight .s,
+.markdown-body .highlight .sb,
+.markdown-body .highlight .sc,
+.markdown-body .highlight .sd,
+.markdown-body .highlight .s2,
+.markdown-body .highlight .se,
+.markdown-body .highlight .sh,
+.markdown-body .highlight .si,
+.markdown-body .highlight .sx,
+.markdown-body .highlight .s1 {
+  color: #df5000;
+}
+
+.markdown-body .highlight .kc,
+.markdown-body .highlight .kd,
+.markdown-body .highlight .kn,
+.markdown-body .highlight .kp,
+.markdown-body .highlight .kr,
+.markdown-body .highlight .kt,
+.markdown-body .highlight .k,
+.markdown-body .highlight .o {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .kt {
+  color: #458;
+}
+
+.markdown-body .highlight .c,
+.markdown-body .highlight .cm,
+.markdown-body .highlight .c1 {
+  color: #998;
+  font-style: italic;
+}
+
+.markdown-body .highlight .cp,
+.markdown-body .highlight .cs {
+  color: #999;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .cs {
+  font-style: italic;
+}
+
+.markdown-body .highlight .n {
+  color: #333;
+}
+
+.markdown-body .highlight .na,
+.markdown-body .highlight .nv,
+.markdown-body .highlight .vc,
+.markdown-body .highlight .vg,
+.markdown-body .highlight .vi {
+  color: #008080;
+}
+
+.markdown-body .highlight .nb {
+  color: #0086B3;
+}
+
+.markdown-body .highlight .nc {
+  color: #458;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .no {
+  color: #094e99;
+}
+
+.markdown-body .highlight .ni {
+  color: #800080;
+}
+
+.markdown-body .highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .nf {
+  color: #945277;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .nn {
+  color: #555;
+}
+
+.markdown-body .highlight .nt {
+  color: #000080;
+}
+
+.markdown-body .highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+
+.markdown-body .highlight .gd {
+  color: #000;
+  background-color: #fdd;
+}
+
+.markdown-body .highlight .gd .x {
+  color: #000;
+  background-color: #faa;
+}
+
+.markdown-body .highlight .ge {
+  font-style: italic;
+}
+
+.markdown-body .highlight .gr {
+  color: #aa0000;
+}
+
+.markdown-body .highlight .gh {
+  color: #999;
+}
+
+.markdown-body .highlight .gi {
+  color: #000;
+  background-color: #dfd;
+}
+
+.markdown-body .highlight .gi .x {
+  color: #000;
+  background-color: #afa;
+}
+
+.markdown-body .highlight .go {
+  color: #888;
+}
+
+.markdown-body .highlight .gp {
+  color: #555;
+}
+
+.markdown-body .highlight .gs {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .gu {
+  color: #800080;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .gt {
+  color: #aa0000;
+}
+
+.markdown-body .highlight .ow {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .w {
+  color: #bbb;
+}
+
+.markdown-body .highlight .sr {
+  color: #017936;
+}
+
+.markdown-body .highlight .ss {
+  color: #8b467f;
+}
+
+.markdown-body .highlight .bp {
+  color: #999;
+}
+
+.markdown-body .highlight .gc {
+  color: #999;
+  background-color: #EAF2F5;
+}
+
+.markdown-body .octicon {
+  font: normal normal 16px octicons-anchor;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.markdown-body .octicon-link:before {
+  content: '\f05c';
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  float: left;
+  margin: 0.3em 0 0.25em -1.6em;
+  vertical-align: middle;
+}
+table td{ word-wrap: break-word !important; word-break: break-all !important; }
+/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #333;
+  background: #f8f8f8;
+  -webkit-text-size-adjust: none;
+}
+
+.hljs-comment,
+.diff .hljs-header {
+  color: #998;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.css .rule .hljs-keyword,
+.hljs-winutils,
+.nginx .hljs-title,
+.hljs-subst,
+.hljs-request,
+.hljs-status {
+  color: #333;
+  font-weight: bold;
+}
+
+.hljs-number,
+.hljs-hexcolor,
+.ruby .hljs-constant {
+  color: #008080;
+}
+
+.hljs-string,
+.hljs-tag .hljs-value,
+.hljs-doctag,
+.tex .hljs-formula {
+  color: #d14;
+}
+
+.hljs-title,
+.hljs-id,
+.scss .hljs-preprocessor {
+  color: #900;
+  font-weight: bold;
+}
+
+.hljs-list .hljs-keyword,
+.hljs-subst {
+  font-weight: normal;
+}
+
+.hljs-class .hljs-title,
+.hljs-type,
+.vhdl .hljs-literal,
+.tex .hljs-command {
+  color: #458;
+  font-weight: bold;
+}
+
+.hljs-tag,
+.hljs-tag .hljs-title,
+.hljs-rule .hljs-property,
+.django .hljs-tag .hljs-keyword {
+  color: #000080;
+  font-weight: normal;
+}
+
+.hljs-attribute,
+.hljs-variable,
+.lisp .hljs-body,
+.hljs-name {
+  color: #008080;
+}
+
+.hljs-regexp {
+  color: #009926;
+}
+
+.hljs-symbol,
+.ruby .hljs-symbol .hljs-string,
+.lisp .hljs-keyword,
+.clojure .hljs-keyword,
+.scheme .hljs-keyword,
+.tex .hljs-special,
+.hljs-prompt {
+  color: #990073;
+}
+
+.hljs-built_in {
+  color: #0086b3;
+}
+
+.hljs-preprocessor,
+.hljs-pragma,
+.hljs-pi,
+.hljs-doctype,
+.hljs-shebang,
+.hljs-cdata {
+  color: #999;
+  font-weight: bold;
+}
+
+.hljs-deletion {
+  background: #fdd;
+}
+
+.hljs-addition {
+  background: #dfd;
+}
+
+.diff .hljs-change {
+  background: #0086b3;
+}
+
+.hljs-chunk {
+  color: #aaa;
+}
+
+
+</style>
+</head><body><div class="markdown-body">
+
+<h1 id="http">HTTP 系列之 状态码</h1>
+<h3 id="">基本介绍</h3>
+<p>状态码由三位整数组成，表示服务器尽可能理解和完成客户端请求时的响应状态。</p>
+<p>HTTP 状态码是可扩展的。客户端不需要识别所有已声明的状态码，当然如果能够做到这一点就更完美了。但是呢，客户端必须识别状态码的任何一个基本类别，也就是三位整数的第一位（用以表明状态码基本类型）。对于不能识别的状态码，则按照 x00 来对待（x 保持对应基本类型不变），此外，不能识别的状态码对应的数据也是不允许缓存的。</p>
+<p>例如，如果客户端接收到一个不能识别的 471 状态码，则客户端就可以假定是请求数据错误，并将该状态码当做 400 状态码来对待。通常情况下，服务器端响应会包含对应状态的解释信息。</p>
+<p>状态码的第一位数字用来确定响应类型。另外两位数字暂时还未进行分类。目前为止，第一位数字有5种取值：</p>
+<ul>
+<li>1xx (信息)：请求已收到，需要请求者继续执行操作</li>
+<li>2xx (成功)：请求已成功收到理解并接受</li>
+<li>3xx (跳转)：需要进一步的操作以完成请求</li>
+<li>4xx (客户端错误)：客户端请求包含语法错误或请求无法完成</li>
+<li>5xx (服务器错误)：服务器在处理请求的过程中发生了错误</li>
+</ul>
+<h3 id="-1">状态码一览表</h3>
+<p>已知状态码分别在 <a href="https://tools.ietf.org/html/rfc7231#section-6">RFC 7231 第六章</a>、<a href="https://tools.ietf.org/html/rfc7232#section-4">RFC 7232 第四章</a>、<a href="https://tools.ietf.org/html/rfc7233#section-4">RFC 7233 第四章</a>以及 <a href="https://tools.ietf.org/html/rfc7235#section-3">RFC 7235 第三章</a> 中进行了定义。下表中的 <code>描述短语</code>(reason phrases) 列只是建议值，在不影响协议的前提下，可以使用本地的同等描述替换。</p>
+<p>部分状态码对应的数据是可以缓存（比如：200， 203， 204， 206， 300， 301， 404， 405， 410， 414， 和 501）并再次使用的（在一定<a href="https://tools.ietf.org/html/rfc7234">缓存规则控制</a>下）；剩余的状态码对应响应默认都是不可缓存的。</p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th style="text-align:left;">描述短语</th>
+<th style="text-align:left;">文档位置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100</td>
+<td style="text-align:left;">Continue</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7231#section-6.2.1">RFC 7231 6.2.1</a></td>
+</tr>
+<tr>
+<td>101</td>
+<td style="text-align:left;">Switching Protocols</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7231#section-6.2.2">RFC 7231 6.2.2</a></td>
+</tr>
+<tr>
+<td>200</td>
+<td style="text-align:left;">OK</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">RFC 7231 6.3.1</a></td>
+</tr>
+<tr>
+<td>201</td>
+<td style="text-align:left;">Created</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7231#section-6.3.2">RFC 7231 6.3.2</a></td>
+</tr>
+<tr>
+<td>202</td>
+<td style="text-align:left;">Accepted</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7231#section-6.3.3">RFC 7231 6.3.3</a></td>
+</tr>
+<tr>
+<td>203</td>
+<td style="text-align:left;">Non-Authoritative Information</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7231#section-6.3.4">RFC 7231 6.3.4</a></td>
+</tr>
+<tr>
+<td>204</td>
+<td style="text-align:left;">No Content</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7231#section-6.3.5">RFC 7231 6.3.5</a></td>
+</tr>
+<tr>
+<td>205</td>
+<td style="text-align:left;">Reset Content</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7231#section-6.3.6">RFC 7231 6.3.6</a></td>
+</tr>
+<tr>
+<td>206</td>
+<td style="text-align:left;">Partial Content</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7233#section-4.1">RFC 7233 4.1</a></td>
+</tr>
+<tr>
+<td>300</td>
+<td style="text-align:left;">Multiple Choices</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7231#section-6.4.1">RFC 7231 6.4.1</a></td>
+</tr>
+<tr>
+<td>301</td>
+<td style="text-align:left;">Moved Permanently</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7231#section-6.4.2">RFC 7231 6.4.2</a></td>
+</tr>
+<tr>
+<td>302</td>
+<td style="text-align:left;">Found</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7231#section-6.4.3">RFC 7231 6.4.3</a></td>
+</tr>
+<tr>
+<td>303</td>
+<td style="text-align:left;">See Other</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7231#section-6.4.4">RFC 7231 6.4.4</a></td>
+</tr>
+<tr>
+<td>304</td>
+<td style="text-align:left;">Not Modified</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7232#section-4.1">RFC 7232 4.1</a></td>
+</tr>
+<tr>
+<td>305</td>
+<td style="text-align:left;">Use Proxy</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7231#section-6.4.5">RFC 7231 6.4.5</a></td>
+</tr>
+<tr>
+<td>307</td>
+<td style="text-align:left;">Temporary Redirect</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7231#section-6.4.7">RFC 7231 6.4.</a></td>
+</tr>
+<tr>
+<td>400</td>
+<td style="text-align:left;">Bad Request</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">RFC 7231 6.5.1</a></td>
+</tr>
+<tr>
+<td>401</td>
+<td style="text-align:left;">Unauthorized</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7235#section-3.1">RFC 7235 3.1</a></td>
+</tr>
+<tr>
+<td>402</td>
+<td style="text-align:left;">Payment Required</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7231#section-6.5.2">RFC 7231 6.5.2</a></td>
+</tr>
+<tr>
+<td>403</td>
+<td style="text-align:left;">Forbidden</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">RFC 7231 6.5.3</a></td>
+</tr>
+<tr>
+<td>404</td>
+<td style="text-align:left;">Not Found</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">RFC 7231 6.5.4</a></td>
+</tr>
+<tr>
+<td>405</td>
+<td style="text-align:left;">Method Not Allowed</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7231#section-6.5.5">RFC 7231 6.5.5</a></td>
+</tr>
+<tr>
+<td>406</td>
+<td style="text-align:left;">Not Acceptable</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7231#section-6.5.6">RFC 7231 6.5.6</a></td>
+</tr>
+<tr>
+<td>407</td>
+<td style="text-align:left;">Proxy Authentication Required</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7235#section-3.2">RFC 7235 3.2</a></td>
+</tr>
+<tr>
+<td>408</td>
+<td style="text-align:left;">Request Timeout</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7231#section-6.5.7">RFC 7231 6.5.7</a></td>
+</tr>
+<tr>
+<td>409</td>
+<td style="text-align:left;">Conflict</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7231#section-6.5.8">RFC 7231 6.5.8</a></td>
+</tr>
+<tr>
+<td>410</td>
+<td style="text-align:left;">Gone</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7231#section-6.5.9">RFC 7231 6.5.9</a></td>
+</tr>
+<tr>
+<td>411</td>
+<td style="text-align:left;">Length Required</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7231#section-6.5.10">RFC 7231 6.5.10</a></td>
+</tr>
+<tr>
+<td>412</td>
+<td style="text-align:left;">Precondition Failed</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7232#section-4.2">RFC 7232 4.2</a></td>
+</tr>
+<tr>
+<td>413</td>
+<td style="text-align:left;">Payload Too Large</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7231#section-6.5.11">RFC 7231 6.5.11</a></td>
+</tr>
+<tr>
+<td>414</td>
+<td style="text-align:left;">URI Too Long</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7231#section-6.5.12">RFC 7231 6.5.12</a></td>
+</tr>
+<tr>
+<td>415</td>
+<td style="text-align:left;">Unsupported Media Type</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7231#section-6.5.13">RFC 7231 6.5.13</a></td>
+</tr>
+<tr>
+<td>416</td>
+<td style="text-align:left;">Range Not Satisfiable</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7233#section-4.4">RFC 7233 4.4</a></td>
+</tr>
+<tr>
+<td>417</td>
+<td style="text-align:left;">Expectation Failed</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7231#section-6.5.14">RFC 7231 6.5.14</a></td>
+</tr>
+<tr>
+<td>426</td>
+<td style="text-align:left;">Upgrade Required</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7231#section-6.5.15">RFC 7231</a></td>
+</tr>
+<tr>
+<td>500</td>
+<td style="text-align:left;">Internal Server Error</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">RFC 7231 6.6.1</a></td>
+</tr>
+<tr>
+<td>501</td>
+<td style="text-align:left;">Not Implemented</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7231#section-6.6.2">RFC 7231 6.6.2</a></td>
+</tr>
+<tr>
+<td>502</td>
+<td style="text-align:left;">Bad Gateway</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7231#section-6.6.3">RFC 7231 6.6.3</a></td>
+</tr>
+<tr>
+<td>503</td>
+<td style="text-align:left;">Service Unavailable</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7231#section-6.6.4">RFC 7231 6.6.4</a></td>
+</tr>
+<tr>
+<td>504</td>
+<td style="text-align:left;">Gateway Timeout</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7231#section-6.6.5">RFC 7231 6.6.5</a></td>
+</tr>
+<tr>
+<td>505</td>
+<td style="text-align:left;">HTTP Version Not Supported</td>
+<td style="text-align:left;"><a href="https://tools.ietf.org/html/rfc7231#section-6.6.6">RFC 7231 6.6.6</a></td>
+</tr>
+</tbody>
+</table>
+<p>注意，当前列表并没有详尽的列出所有状态码（其他规格里定义的扩展状态码不包含在此列表）。完整的状态码列表是由 IANA 维护的。<a href="https://tools.ietf.org/html/rfc7231#section-8.2">详见 RFC 7231 8.2</a>。</p>
+<h3 id="-2">详细解释</h3>
+<h4 id="1xxinformational">1xx 信息（Informational）</h4>
+<p>1xx（信息）类状态码表示本次响应处于通信连接临时响应阶段，或者请求操作处于完成并发送最终响应之前的前置阶段。状态行（status-line）后的第一个空行用来结束本次响应（空行是头部信息段落结束信号）。由于 HTTP/1.0 没有规定任何 1xx 类型的状态码，所以当客户端的协议类型是 HTTP/1.0 时，服务器不允许返回任何 1xx 类型的状态码。</p>
+<p>即使客户端不期望接收 1xx 类型的状态码，也必须能够解析一个或更多 1xx 类型的状态码，用以接收最终响应之前的前置信息。用户代理则可以选择忽略某些非期望的 1xx 类型状态码。</p>
+<p>代理服务器必须继续推送 1xx 类型的响应，除非代理服务器本身请求生成 1xx 类型的响应。比如：当代理服务器转发一个请求时，添加了元信息 "Expect: 100-continue"，则此时可以不继续转发原始的 100 响应。</p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th style="text-align:left;">描述短语</th>
+<th style="text-align:left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100</td>
+<td style="text-align:left;">Continue</td>
+<td style="text-align:left;">继续请求。100 状态码表示初始化的请求数据已被接收，且仍未被拒绝。当服务器完全接收到请求数据之后将会尝试去发送一个最终响应给客户端。<br><br> 当一个请求包含 <code>100-continue</code> 的请求头信息时，100 类型的响应则表明服务器期望继续接收请求的负载体（paypload body），详情参照 <a href="https://tools.ietf.org/html/rfc7231#section-5.1.1">RFC 7231 5.1.1</a> 。<br><br> 如果请求没有包含任何期望 <code>100-continue</code> 的头信息，则客户端可以简单抛弃接收到的 100 过渡响应即可。</td>
+</tr>
+<tr>
+<td>101</td>
+<td style="text-align:left;">Switching Protocols</td>
+<td style="text-align:left;">101 状态码表明服务器理解并将继续遵守客户端升级协议的请求，通过升级头部元信息(<a href="https://tools.ietf.org/html/rfc7230#section-6.7">RFC 7230 6.7</a>)来更换在此连接上使用的应用程序协议。服务器必须在响应中生成一个升级头信息，表明在发送空行结束 101 响应之后将立即切换到目标协议。<br><br>     服务器同意升级协议的前提是：目标协议是有利的（更好、更新）。比如：升级到较新的 HTTP 协议相比旧的协议而言就是有利的；或者切换到一个实时且同步的协议以传送利用此类特性的资源。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="2xxsuccessful">2xx 成功（Successful）</h4>
+<p>2xx 状态码表示客户端请求已被服务器成功接收、理解并接受。</p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th style="text-align:left;">描述短语</th>
+<th style="text-align:left;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td style="text-align:left;">OK</td>
+<td style="text-align:left;">成功。200 状态码表示请求成功。200 响应的内容取决于请求的方法。本规格文件定义的请求方法对应的响应负载含义总结如下：<br><br> GET，目标资源的表示<br>HEAD，同 GET，但是没有表示数据。<br> POST，表示请求操作的状态或从请求操作中获得的结果<br> PUT， DELETE，操作状态的表示<br> OPTIONS 通信选项的表示<br> TRACE，由终端服务器接收的请求消息的表示<br><br>尽管原始服务器可能会生成一个长度为零的负载，但是一般情况下，一个链接总是会有对应的响应消息体返回。如果没有请求任何内容，则服务器可以用204状态码替代200状态码。对于一次网络连接来说，没有负载是被允许的，比如成功结果是一个立即开始的通道的情况。<br><br>除了 <a href="https://tools.ietf.org/html/rfc7234#section-4.2.2">RFC 7234 4.2.2</a> 定义的特殊缓存规则控制情况外，一个200状态的响应默认是可缓存的。</td>
+</tr>
+<tr>
+<td>201</td>
+<td style="text-align:left;">Created</td>
+<td style="text-align:left;">创建成功。201状态码表明请求已被成功处理，并且有相应的一个或多个资源被创建。请求创建的基本资源URI要么在头部信息里返回，要么就是当前有效请求的URI。<br><br> 201状态的响应负载多数情况下描述并链接到请求创建的资源上。<a href="https://tools.ietf.org/html/rfc7231#section-7.2">RFC 7231 7.2</a> 详细讨论了一个201状态的响应头信息中验证字段的含义，比如 <code>ETag</code> 和 <code>Last-Modified</code></td>
+</tr>
+<tr>
+<td>202</td>
+<td style="text-align:left;">Accepted</td>
+<td style="text-align:left;">已接受。202状态码表示请求已经被接受并开始处理，但是处理还未完成。请求可能会被成功处理，也可能因为处理时占用太多资源而导致被拒绝。在HTTP协议中，对于一个异步请求，没有措施去重新发送一个响应状态码。<br><br>202状态的响应是有意不表明结果的。目的是为了处理一些无需客户端代理一直和服务器保持连接直到处理结束的情况（比如一个每天只需要执行一次的批处理任务）。此响应发送的信息应该描述请求处理的当前状态，并指向(或嵌入)可以让客户端来预估请求何时实现的状态监视器。</td>
+</tr>
+<tr>
+<td>203</td>
+<td style="text-align:left;">Non-Authoritative Information</td>
+<td style="text-align:left;">非授权信息。203(非授权信息)状态代码表明请求成功，但是返回的有效负载由转换代理 <a href="https://tools.ietf.org/html/rfc7230#section-5.7.2">RFC 7230 5.7.2</a> 修改了源服务器的200(OK)响应。该状态码允许代理在应用转换时通知接收方，因为这些信息可能会影响以后关于内容的决策。例如，当验证一份内容的缓存是否可用时，可能需要限制请求是基于相同的请求路径(通过相同的代理)。<br><br> 203响应类似于<a href="https://tools.ietf.org/html/rfc7234#section-5.5">214</a>转换应用的警告代码，而214的优点是可以适用于任何状态的响应。<br><br> 默认情况下，203响应是可缓存的; 除非方法定义或显式的缓存控制(参见 <a href="https://tools.ietf.org/html/rfc7234#section-4.2.2">RFC 7234 4.2.2</a> )。</td>
+</tr>
+<tr>
+<td>204</td>
+<td style="text-align:left;">No Content</td>
+<td style="text-align:left;">无响应内容。204状态码表示服务器已经成功处理了请求，并且没有任何负载消息体需要发送。<em>响应头字段中的元信息引用目标资源及其请求操作应用之后的选择描述。</em> <br><br> 例如：如果客户端发起一个 PUT 类型的请求，然后接收到一个包含 ETag 头部字段的204响应，则表示 PUT 请求成功处理并且 ETag 的值包含目标资源呈现的实体标记。<br><br>204响应允许服务器指示该操作已经成功地应用到目标资源，同时暗示用户代理不需要 traverse away from 其当前“文档视图”(如果有的话)。<br><br> 例如，一个204状态码通常用于与“保存”操作对应的文档编辑接口，这样保存的文档仍然可以用于用户进行编辑。它还经常被用于希望实现自动化数据传输的接口，例如在分布式版本控制系统中。<br><br> 在头字段之后，第一个空行终止了一个204响应，因为它不能包含消息体。<br><br> 默认情况下，204响应是可缓存的; 除非方法定义或显式的缓存控制(参见<a href="https://tools.ietf.org/html/rfc7234#section-4.2.2">RFC7234</a>的第4.2.2节)。</td>
+</tr>
+<tr>
+<td>205</td>
+<td style="text-align:left;">Reset Content</td>
+<td style="text-align:left;">重置内容。205响应表示服务器已经满足了客户端请求，并且希望客户端将发起该次请求的“文档视图”重置为从原始服务器获取到的状态。<br><br> 这种响应是为了支持通用的数据录入案例， 比如，用户在可访问的空间进行数据录入(表单、记事本、canvas 等)或维护， 并且可以发起请求以提交录入的数据，当收到205响应之后，就可以重置数据输入机制为下一次录入做好准备， 这样用户可以很容易地启动另一个输入操作。<br><br> 由于205个状态代码意味着不会提供额外的内容，因此服务器不能在205响应中生成有效负载。换句话说，服务器返回一个205响应必须满足下面条件中的一个：<br> a)：在头部字段中包含 <code>Content-Length</code>，并且取值为0，表示响应消息体长度为零。<br> b)：为响应指定一个零长度的有效负载，包括一个具有分块值的传输编码头字段和一个由零长度的单个块组成的消息体。<br> c)：在发送空行终止响应的头部后，立即关闭连接。</td>
+</tr>
+<tr>
+<td>206</td>
+<td style="text-align:left;">Partial Content</td>
+<td style="text-align:left;">部分内容。GET 请求的部分资源已被服务器正确处理。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="3xx">3xx 重定向</h4>
+<p>3xx(重定向)类状态码表示，为了完成请求，用户代理需要采取进一步的操作。如果提供了Location头字段(<a href="https://tools.ietf.org/html/rfc7231#section-7.1.2">第7.1.2节</a>)，则用户代理应该自动将其请求重定向到Location字段值引用的URI，即使不理解特定的状态码。由于用户可能不希望重定向一个不安全的请求，所以自动重定向需要谨慎地处理不确定是否安全的方法，如第<a href="https://tools.ietf.org/html/rfc7231#section-4.2.1">4.2.1</a>节中定义的那样。</p>
+<p>有以下几种重定向类型：</p>
+<ol>
+<li>重定向表示资源可能在不同的URI上是可用的，由Location字段提供，如状态码301(永久移动)、302(找到)和307(临时重定向)。</li>
+<li>重定向提供了一种匹配资源的选择，每一个都能代表原始请求目标，比如300(多个选择)状态码。</li>
+<li>重定向到不同的资源，由Location字段标识，可以表示对请求的间接响应，如303(参见其他)状态码。</li>
+<li>重定向到先前缓存的结果，如304(未修改)状态码。</li>
+</ol>
+<p>注意：在HTTP/1.0中，状态码301(永久移动)和302(找到)被定义为第一类重定向(<a href="https://tools.ietf.org/html/rfc1945#section-9.3">RFC1945，第9.3节</a>)。早期的用户代理，对于是否应该在重定向到目标时保持和原始请求相同的请求方法，还是将请求重写为 GET 方法是存在分歧的。虽然HTTP最初定义了301和302的前语义(以匹配其在CERN的原始实现)，并定义了303(参见其他)，以匹配后者的语义，但常见的实践也逐渐在301和302的语义上趋于一致。HTTP/1.1的第一个修订增加了307(临时重定向)，以表示规范语义，而不受不同实践的影响。经过10年后，大多数用户代理仍然会重写301和302的请求方法；因此，当原始请求的方法是 POST 时，该规范统一了行为表现。</p>
+<p>客户端应该检测并干预周期性的重定向(即:“无限”重定向循环)</p>
+<p>注意:本规范的早期版本建议最多使用5个重定向(<a href="https://tools.ietf.org/html/rfc2068#section-10.3">RFC2068，第10.3节</a>)。开发人员需要意识到一些客户端可能会实现这样一个固定的限制。</p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>描述短语</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>300</td>
+<td>Multiple Choices</td>
+<td>多种选择。300(多个选择)状态码表示目标资源有多个呈现，每个都有自己的更具体的标识符，和选择的信息被提供，以便用户(或用户代理)可以通过重定向请求的一个或多个标识符选择首选呈现。换句话说，服务器希望用户代理参与反应性协商，以选择最适合其需要的呈现形式（<a href="https://tools.ietf.org/html/rfc7231#section-3.4">3.4</a>）。 <br><br> 如果服务器有一个首选的选择，那么服务器应该生成一个 Location 头字段，其中包含首选的URI引用。用户代理可以使用 Location 字段值自动重定向。 <br><br> 除了HEAD以外的请求方法，服务器应该在300个响应中生成一个有效负载，其中包含一个表示元数据和URI引用的列表，用户或用户代理可以从中选择最合适的一个。 如果用户代理了解所提供的媒体类型，则可以自动从该列表中进行选择。这个规范没有定义自动选择的特定格式，因为HTTP试图与它的有效负载的定义保持正交。在实践中，通过共享的设计或内容协商，或者在一些普遍接受的超文本格式中，用户代理可以接受一些容易解析的格式。 <br><br> 默认情况下，300响应是可缓存的; 除非方法定义或显式的缓存控制(参见<a href="https://tools.ietf.org/html/rfc7234#section-4.2.2">RFC7234</a>的第4.2.2节)。<br><br> 对于300个状态代码的原始建议定义了URI头字段，它提供了一个备选表示列表，这样它就可以用于200、300和406响应，并在对HEAD方法的响应中使用。然而，由于缺乏对语法的部署和不一致，导致URI和Alternates(后来的建议)被从这个规范中删除。可以使用一组链接头字段(RFC5988)来传递列表，每个字段都有“alternate”的关系，尽管部署是一个先有鸡还是先有蛋的问题。</td>
+</tr>
+<tr>
+<td>301</td>
+<td>Moved Permanently</td>
+<td>永久移动。301(永久移动)状态码表示目标资源已经被分配了一个新的永久URI，并且任何将来对该资源的引用都应该使用其中一个URI(s)。具有链接编辑功能的客户端应该自动将对有效请求URI的引用重新链接到服务器发送的一个或多个新引用中。<br><br> 服务器应该在响应中生成一个 Location 头字段，其中包含新的永久URI的首选引用。用户代理可以使用 Location 字段值自动重定向。服务器的响应负载通常包含一个附有指向新 URL(s) 超链接的短超文本记录。<br><br> 注意：出于历史原因，用户代理在后续请求中可能会从 POST 方法改为 GET 方法。如果这种表现是不符合需求，则可以使用307(临时重定向)状态码。<br><br> 默认情况下，301响应是可缓存的; 除非方法定义或显式的缓存控制(参见<a href="https://tools.ietf.org/html/rfc7234#section-4.2.2">RFC7234</a>的第4.2.2节)。</td>
+</tr>
+<tr>
+<td>302</td>
+<td>Found</td>
+<td>临时移动。302(找到)状态码表示目标资源暂时驻留在不同的 URI 下。由于重定向可能会在某些情况下发生更改，因此客户端应该继续使用有效的请求 URI 来处理将来的请求。<br><br> 服务器应该在响应中生成一个 Location 头字段，其中包含对于不同 URI 的 URI 引用。用户代理可以使用 Location 字段值自动重定向。服务器的响应负载通常应该包含一个超链接文本来指向不同的 URL(s)。<br><br> 注意：出于历史原因，用户代理在后续请求中可能会从 POST 方法改为 GET 方法。如果这种表现是不符合需求，则可以使用307(临时重定向)状态码。</td>
+</tr>
+<tr>
+<td>303</td>
+<td>See Other</td>
+<td>查看其它。303(查看其他)状态码表示，服务器正在将用户代理重定向到另一个资源，如 Location 头字段中的 URI 所指示的，目的是提供对原始请求的间接响应。用户代理可以执行针对该URI的检索请求(如果使用HTTP)，也可以被重定向，并将最终结果作为对原始请求的应答。注意，Location 头字段中的新 URI 并不等同于有效的请求 URI。<br><br> 该状态码可以应用到任何一个 HTTP 方法上。它主要用于允许 POST 操作的输出将用户代理重定向到所选的资源，因为这样做提供了与 POST 响应相对应的信息，该表单可以独立地标识、添加书签和缓存，独立于原始请求。<br><br> 对GET请求的303响应表明源服务器没有可以通过 HTTP 传输的目标资源的表示。但是，Location 字段值是指对目标资源进行描述性的资源，例如，对其他资源进行检索请求可能会导致对接收者有用的表示，而不意味着它代表原始的目标资源。请注意，对于可以表示的问题的答案，什么表示是适当的，以及什么可能是有用的描述超出了HTTP的范围。<br><br> 除了对HEAD请求的响应之外，303响应的表示应该包含一个短的超文本，并且在 Location 头字段中提供相同 URI 引用的超链接。</td>
+</tr>
+<tr>
+<td>304</td>
+<td>Not Modified</td>
+<td>未修改。所请求的资源未修改，服务器返回此状态码时，不会返回任何资源。客户端通常会缓存访问过的资源，通过提供一个头信息指出客户端希望只返回在指定日期之后修改的资源。</td>
+</tr>
+<tr>
+<td>305</td>
+<td>Use Proxy</td>
+<td>使用代理。已废弃。</td>
+</tr>
+<tr>
+<td>306</td>
+<td>Unused</td>
+<td>未使用。未使用，状态码保留。</td>
+</tr>
+<tr>
+<td>307</td>
+<td>Temporary Redirect</td>
+<td>临时重定向。307(临时重定向)状态码表示目标资源暂时驻留在不同的 URI 下，如果用户代理执行自动重定向到该 URI，则不能更改请求方法。由于重定向可以随时间变化，客户端应该继续使用原始有效请求 URI 来处理将来的请求。<br><br> 服务器应该在响应中生成一个 Location 头字段，其中包含不同 URI 的 URI 引用。用户代理可以使用 Location 字段值自动重定向。服务器的响应负载通常应该包含一个超链接文本来指向不同的 URL(s)。<br><br> 注意：此状态代码类似于302(临时重定向)，只是不允许从把请求方法从 POST 更改为 GET。此规范定义了301的对等物。不过，永久地移动)(<a href="https://tools.ietf.org/html/rfc7238">RFC7238</a>)，为这个目的定义了状态代码308(永久重定向)。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="4xx">4xx 客户端错误</h4>
+<p>4xx 类型的状态码表示客户端似乎出现了错误。除了响应HEAD请求时，服务器应该发送包含错误情况说明的表示，以及它是临时的还是永久的状态。这些状态码适用于任何请求方法。用户代理应该向用户显示任何包含的表示。</p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>描述短语</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>400</td>
+<td>Bad Request</td>
+<td>错误请求。400(错误请求)状态码表示服务器不能或不会处理请求，因为客户端请求包含错误（比如：格式错误的请求语法，无效的请求消息框架，或欺骗性请求路由。）。</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized</td>
+<td>请求要求用户的身份认证。</td>
+</tr>
+<tr>
+<td>402</td>
+<td>Payment Required</td>
+<td>保留，未来使用。</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+<td>禁用。403(禁用)状态代码表示服务器理解请求，但拒绝授权。服务器如果想要公开请求被拒绝的原因，那么就应该在响应的有效负载中进行说明（如果可以的话）。 <br><br> 如果请求中提供了身份验证凭证，则服务器认为它们不足以授予访问权限。客户端不应自动使用相同凭据发起重复请求。客户端可以使用新的或不同的凭证重复请求。但是，出于与凭证无关的原因，可能会禁止请求。<br><br> 如果源服务器希望隐藏被拒绝访问的当前资源，则应该使用 404(Not Found) 状态码。</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>未找到。404(未找到)状态码表明源服务器没有找到目标资源的当前表示，或者不愿意透露该资源的存在。404状态码不能表示这种资源缺失是临时的还是永久的；如果源服务器通过某种可配置的方法知道该条件可能是永久性的，那么410(消失)状态码将优于404。<br><br> 默认情况下，404响应是可缓存的; 除非方法定义或显式的缓存控制(参见<a href="https://tools.ietf.org/html/rfc7234#section-4.2.2">RFC7234</a>的第4.2.2节)。</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed</td>
+<td>方法不允许。405(方法不允许)状态码表示源服务器理解在请求行中接收的方法，但目标资源不支持。源服务器必须在405响应中生成一个允许头字段，其中包含目标资源当前支持的方法的列表。<br><br> 默认情况下，405响应是可缓存的; 除非方法定义或显式的缓存控制(参见<a href="https://tools.ietf.org/html/rfc7234#section-4.2.2">RFC7234</a>的第4.2.2节)。</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable</td>
+<td>不可接受。406(不可接受的)状态码表示，根据请求中的主动协商头字段(第<a href="https://tools.ietf.org/html/rfc7231#section-5.3">5.3</a>节)，目标资源没有一个可以被用户代理接受的当前表示，同时服务器不愿意提供默认的表示。<br><br> 服务器应该生成一个有效负载，其中包含可用的表示特征列表和相应的资源标识符，用户或用户代理可以从中选择最合适的标识符。用户代理可以自动从该列表中选择最合适的选项。然而，本规范没有定义任何自动选择的标准，如第<a href="https://tools.ietf.org/html/rfc7231#section-6.4.1">6.4.1</a>节所述。</td>
+</tr>
+<tr>
+<td>407</td>
+<td>Proxy Authentication Required</td>
+<td>请求需要代理授权。请求要求代理的身份认证，与401类似，但请求者应当使用代理进行授权。</td>
+</tr>
+<tr>
+<td>408</td>
+<td>Request Timeout</td>
+<td>请求超时。408(请求超时)状态码表明服务器在准备等待的时间内没有收到完整的请求消息。服务器应该在响应中发送“close”连接选项(<a href="https://tools.ietf.org/html/rfc7230#section-6.1">RFC7230的第6.1节</a>)，因为408意味着服务器决定关闭连接，而不是继续等待。如果客户端在传输中有一个未完成的请求，客户端可能会在新的连接上重复该请求。</td>
+</tr>
+<tr>
+<td>409</td>
+<td>Conflict</td>
+<td>冲突。409(冲突)状态码表示由于与目标资源当前状态的冲突，请求无法完成。此代码用于客户端可能能够解决冲突并重新提交请求的情况。服务器应该生成一个有效负载，其中包含足够的信息以供客户端识别冲突的源。<br><br> 冲突最可能发生在对PUT请求的响应中。例如，如果正在使用版本控制，并且将所述的表示包含到与先前(第三方)请求所生成的资源冲突的资源中，源服务器可能会使用409响应来表示它不能完成请求。在这种情况下，响应应尽可能包含有用的信息，以基于修订历史来合并差异。</td>
+</tr>
+<tr>
+<td>410</td>
+<td>Gone</td>
+<td>已消失。410(已消失)状态码表明，在源服务器上对目标资源的访问不再可用，并且这种情况可能是永久的。如果源服务器不知道，或者没有任何措施来确定该条件是否永久，则应该使用状态码404(未找到)。 <br><br> 410响应主要是为了协助web维护，通知接收者，资源是故意不可用的，并且服务器所有者希望删除该资源的远程链接引用。这样的情况在有限时间、推广服务和属于个人的资源中是常见的，不再与源服务器的站点相关联。没有必要将所有永久不可用的资源都标记为“gone”或保持标记的长度，这是由服务器所有者决定的。<br><br> 410响应是可缓存的; 除非方法定义或显式的缓存控制(参见<a href="https://tools.ietf.org/html/rfc7234#section-4.2.2">RFC7234</a>的第4.2.2节)。</td>
+</tr>
+<tr>
+<td>411</td>
+<td>Length Required</td>
+<td>需要数据长度信息。411状态码表示，服务器拒绝接受没有定义 <code>Content-Length</code>(<a href="https://tools.ietf.org/html/rfc7230#section-3.3.2">RFC7230的3.3.2节</a>) 的请求。如果在请求消息中添加了包含消息正文长度的有效 <code>Content-Length</code> 头字段，则客户端可以重复发起请求。</td>
+</tr>
+<tr>
+<td>413</td>
+<td>Payload Too Large</td>
+<td>负载过大。413状态码表明服务器拒绝处理请求，因为请求有效负载比服务器愿意或能够处理的要大。服务器可能关闭连接以阻止客户端继续请求。</td>
+</tr>
+<tr>
+<td>414</td>
+<td>URI Too Long</td>
+<td>URI 超出长度限制。414状态码表示服务器拒绝服务请求，因为请求-目标(<a href="https://tools.ietf.org/html/rfc7230#section-5.3">RFC7230的5.3节</a>)超出了服务器能够识别的最大长度。当客户端不当的将一个 POST 请求转化为 GET 请求，并且携带大量查询信息的时候，或者当客户端陷入“黑洞”重定向，亦或者当服务器受到一个试图利用潜在安全漏洞的客户端攻击时，这种罕见的情况才有可能发生。<br><br> 414响应是可缓存的; 除非方法定义或显式的缓存控制(参见<a href="https://tools.ietf.org/html/rfc7234#section-4.2.2">RFC7234</a>的第4.2.2节)。</td>
+</tr>
+<tr>
+<td>415</td>
+<td>Unsupported Media Type</td>
+<td>不支持的媒体类型。415状态码表示源服务器拒绝服务请求，因为在当前请求方法下，目标资源不支持请求负载的格式。格式问题可能是由于请求的 <code>Content-Type</code> 或 <code>Content-Encoding</code>，或者是直接检查数据的结果。</td>
+</tr>
+<tr>
+<td>417</td>
+<td>Expectation Failed</td>
+<td>预期失败。417状态码表示，请求的 <code>Expect</code> 头字段(<a href="https://tools.ietf.org/html/rfc7231#section-5.1.1">第5.1.1节</a>)中给出的期望不能被至少一个入站服务器所满足。</td>
+</tr>
+<tr>
+<td>426</td>
+<td>Upgrade Required</td>
+<td>需要升级。426状态码表示，服务器拒绝使用当前协议执行请求，但在客户端升级到另一个不同的协议之后，服务器可能会接受该请求。服务器必须在426响应中发送一个 <code>Upgrade</code> 头字段，以表明所需的协议(<a href="https://tools.ietf.org/html/rfc7230#section-6.7">第6.7条 RFC7230</a>)。<br><br> 比如：<br>HTTP/1.1 426 Upgrade Required<br>Upgrade: HTTP/3.0 <br>Connection: Upgrade <br>Content-Length: 53 <br>Content-Type: text/plain <br><br> 该服务需要使用HTTP/3.0协议。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="5xx">5xx 服务器错误</h4>
+<p>5xx类状态码表示服务器意识到它有错误或无法执行所请求的方法。除了响应HEAD请求外，服务器都应该发送包含错误情况说明的表示，以及该错误情况是临时的还是永久的。用户代理应该向用户显示任何包含的表示。这些响应代码适用于任何请求方法。</p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>描述短语</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+<td>服务器内部错误。500状态码表示服务器遇到了一个意外情况，阻止它完成请求。</td>
+</tr>
+<tr>
+<td>501</td>
+<td>Not Implemented</td>
+<td>未实现。501状态码表示服务器不支持满足请求所需的功能。当服务器不识别请求方法并且不能支持任何资源时，返回501响应是比较合适的。<br><br> 501响应是可缓存的; 除非方法定义或显式的缓存控制(参见<a href="https://tools.ietf.org/html/rfc7234#section-4.2.2">RFC7234</a>的第4.2.2节)。</td>
+</tr>
+<tr>
+<td>502</td>
+<td>Bad Gateway</td>
+<td>错误网关。充当网关或代理的服务器，从远端服务器接收到了一个无效的请求。</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable</td>
+<td>服务不可用。503状态码表示，由于临时超载或计划维护，服务器目前无法处理请求，这可能在稍后会得到缓解。服务器可以发送 <code>Retry-After</code> 头字段(<a href="https://tools.ietf.org/html/rfc7231#section-7.1.3">第7.1.3节</a>)，建议客户端在重新尝试请求之前等待适当的时间。<br><br> 注意：503状态代码的存在并不意味着服务器在超载时必须使用它。有些服务器可能会简单地拒绝连接。</td>
+</tr>
+<tr>
+<td>504</td>
+<td>Gateway Timeout</td>
+<td>网关超时。504状态码表明，服务器在充当网关或代理时，并没有收到需要访问的上游服务器的及时响应，以完成请求。</td>
+</tr>
+<tr>
+<td>505</td>
+<td>HTTP Version Not Supported</td>
+<td>不支持的 HTTP 版本。505状态码表示服务器不支持或拒绝支持请求消息中使用的主要版本的 HTTP 协议。服务器表示无法或不愿意使用与客户端相同的主要版本(如<a href="https://tools.ietf.org/html/rfc7230#section-2.6">RFC7230的第2.6节所述</a>)来完成请求，而不是使用错误消息。服务器应该为505响应生成一个表示，描述为什么不支持该版本，以及该服务器支持哪些其他协议。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+  <p>终于翻译完了初稿（需要继续订正），好累啊……</p>
+</blockquote>
+<p>参考链接</p>
+<ul>
+<li>https://tools.ietf.org/html/rfc7231</li>
+<li>http://www.runoob.com/http/http-status-codes.html</li>
+<li>https://juejin.im/entry/5794c6118ac247005f266b58</li>
+</ul></div></body>
+
+</html>

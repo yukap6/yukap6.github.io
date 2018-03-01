@@ -6,7 +6,7 @@ const converter = new showdown.Converter();
 converter.setOption('tables', true);
 const rimraf = require('rimraf');
 
-const DIST_DIR_NAME = 'dist';
+const DIST_DIR_NAME = 'blog';
 const SRC_DIR_NAME = 'src';
 const src = path.join(__dirname, SRC_DIR_NAME);
 const dist = path.join(__dirname, DIST_DIR_NAME);
