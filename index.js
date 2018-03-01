@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const showdown  = require('showdown');
 const converter = new showdown.Converter();
+converter.setOption('tables', true);
 const rimraf = require('rimraf');
 
 const DIST_DIR_NAME = 'dist';
