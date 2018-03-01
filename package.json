@@ -3,7 +3,8 @@
   "author": "yukap",
   "description": "blog",
   "scripts": {
-    "start": ""
+    "start": "open index.html",
+    "build": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -11,6 +12,8 @@
   },
   "homepage": "https://github.com/yukap6/yukap6.github.io.git",
   "devDependencies": {
-    "markdown": "^0.5.0"
+    "markdown": "^0.5.0",
+    "rimraf": "^2.6.2",
+    "showdown": "^1.8.6"
   }
 }
