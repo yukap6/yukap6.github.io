@@ -16,5 +16,21 @@ function binaryChop(search, targetArray) {
   }
   return -1;
 }
-const arr = [0,1,2,3,6,7,8,9,101,102];
-console.log(binaryChop(101, arr));
+
+// 选择排序
+function selectSort(arr) {
+  for (let i = 0, len = arr.length; i < len; i++) {
+    let min = i;
+    for (let j = i + 1; j < len; j++) {
+      if (Number(arr[j]) - Number(arr[min]) <= 0) {
+        min = j;
+      }
+    }
+    const t = arr[i];
+    arr[i] = arr[min];
+    arr[min] = t;
+  }
+  return arr;
+}
+const arr = [19,28,98, 1,2,3,0,1,2,3,6,7,8,9,101,102];
+console.log(selectSort(arr));
