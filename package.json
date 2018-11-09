@@ -1,6 +1,7 @@
 {
   "name": "yukap6.github.io",
   "author": "yukap",
+  "version": "0.1.0",
   "description": "blog",
   "scripts": {
     "start": "open index.html",
