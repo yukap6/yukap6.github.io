@@ -840,25 +840,25 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
 <h1 id="htmloverflowhiddenbug">html overflow:hidden 引发页面返回顶部 bug 记录</h1>
 <h2 id="">问题描述</h2>
-<p>打开 <a href="https://codepen.io/yukap6/pen/wQgwbM">有 Bug Demo</a>，滚动鼠标到页面最底部，点击 <code>点我显示模态框</code> 按钮就会发现，页面莫名其妙的”回到了顶部“。而正常期望是，模态框显示在当前屏幕内容的正上方即可，背景内容不出现滚动，也不”回到顶部“，比如 <a href="https://codepen.io/yukap6/pen/VVPYqr">正常的 Demo</a> 所示（点击 <code>点我显示模态框</code> 按钮即可）。那为什么会出现”回到顶部“的情况呢？</p>
+<p>开发模态框组件时，当滚动到页面底部，点击按钮使模态框弹出时，页面”回到了顶部“，<a href="https://codepen.io/yukap6/pen/wQgwbM">点击查看示例</a>。示例中，点击<code>点我显示模态框</code> 按钮即可复现该问题。而正常情况应该是，模态框显示在当前屏幕内容的正上方即可，背景内容不出现滚动，也不”回到顶部“，比如 <a href="https://codepen.io/yukap6/pen/VVPYqr">正常的 Demo</a> 所示（点击 <code>点我显示模态框</code> 按钮即可）。那为什么会出现”回到顶部“的情况呢？</p>
 <h2 id="-1">解决方案</h2>
-<p>经过仔细分析发现，当点击按钮让模态框显示的时候，为了让背景内容不出现滚动，<code>html</code> <code>body</code> 元素同时被添加了如下所示样式，而当不添加这些样式给 <code>html</code> <code>body</code> 元素时，页面就会恢复正常（但是背景内容会滚动）。那么问题就定位到了，添加的 CSS 样式有问题，如下所示</p>
-<pre><code>  // html body 同时加入如下样式时有 bug
+<p>仔细分析发现，当点击按钮让模态框显示的时候，为了让背景内容不出现滚动，<code>html</code> <code>body</code> 元素同时被添加了如下所示样式，而当不添加这些样式给 <code>html</code> <code>body</code> 元素时，页面就表现正常（但是背景内容会滚动）。那么问题就定位到了，给 <code>html</code> <code>body</code> 元素添加的 CSS 样式有问题，如下</p>
+<pre><code>  // html body 同时加入如下样式时有，页面会回到顶部
   width: 100%;
   height: 100%;
   overflow: hidden;
 </code></pre>
-<p>那么怎么做到既让模态框在当前屏幕正常显示，又能让背景内容固定不滚动，而且不会”回到顶部“呢？经过一系列测试，下面列出一些解决方案（具体原理会在稍后详细讨论）。</p>
-<h3 id="1htmloverflowhidden">方案1，只给 <code>html</code> 元素添加 <code>overflow:hidden</code></h3>
-<p>如 <a href="https://codepen.io/yukap6/pen/MzJwrJ">Demo</a> 所示，模态框正常显示。所做的调整就是将样式内容修改如下，并且只将该样式添加到 <code>html</code> 元素上。</p>
+<p>那怎么能做到既让模态框正常显示，又让背景内容不滚动，且页面不会”回到顶部“呢？经过一系列测试，下面列出一些解决方案（具体原理会在稍后详细讨论）。</p>
+<h3 id="1htmloverflowhidden">方案1，给 <code>html</code> 元素添加 <code>overflow:hidden</code></h3>
+<p>如 <a href="https://codepen.io/yukap6/pen/MzJwrJ">方案1</a> 所示，模态框正常显示。所做调整是将样式内容修改如下，并且只将该样式添加到 <code>html</code> 元素上。</p>
 <pre><code>overflow: hidden;
 </code></pre>
-<h3 id="2bodyoverflowhidden">方案2，只给 <code>body</code> 元素添加 <code>overflow:hidden</code></h3>
-<p>如 <a href="https://codepen.io/yukap6/pen/eQgpJM">Demo</a> 所示，模态框正常显示。所做的调整就是将样式内容修改如下，并且只将该样式添加到 <code>body</code> 元素上。</p>
+<h3 id="2bodyoverflowhidden">方案2，给 <code>body</code> 元素添加 <code>overflow:hidden</code></h3>
+<p>如 <a href="https://codepen.io/yukap6/pen/eQgpJM">方案2</a> 所示，模态框正常显示。所做调整是将样式内容修改如下，并且只将该样式添加到 <code>body</code> 元素上。</p>
 <pre><code>overflow: hidden;
 </code></pre>
 <h3 id="3htmlbody">方案3，<code>html</code> <code>body</code> 元素添加不同的样式，采用”加法“将问题样式进行组合</h3>
-<p>这里的思路就是以最简代码 <code>overflow:hidden</code> 为基础，一步一步将样式增加，直至全部代码加入导致”回到顶部“问题复现。</p>
+<p>思路就是以最简代码 <code>overflow:hidden</code> 为基础，一步一步将样式增加，直至全部代码加入导致”回到顶部“问题复现。</p>
 <p><a href="https://codepen.io/yukap6/pen/wQgGjv"><strong>组合1</strong>（正常）</a></p>
 <pre><code>html {
 }
@@ -900,7 +900,7 @@ body {
   overflow: hidden;
 }
 </code></pre>
-<p>这里大家就会发现，组合1、2、3 都能正常运行，唯独组合4会出现”回到顶部“的 bug，这到底是为什么呢？接下来，就从原理层面来逐层剖析，并进行一一验证。</p>
+<p>这里大家会发现，组合1、2、3 都能正常运行，唯独组合4会出现”回到顶部“的 bug，这到底是为什么呢？接下来，就从原理层面来逐层剖析，并进行一一验证。</p>
 <h2 id="-2">原理剖析</h2>
 <p>这里就不卖关子了，其实，所有的问题都是因为 <a href="https://www.w3.org/TR/CSS21/visufx.html#propdef-overflow"><code>overflow:hidden</code></a> 这个属性值 和 <code>height: 100%</code> 组合不当造成的，且往下看。</p>
 <p><a href="https://www.w3.org/TR/CSS21/visufx.html#propdef-overflow">overflow 的定义</a></p>
@@ -927,28 +927,31 @@ body {
 <li>scroll 如果需要，内容将被剪裁以适合填充框。 浏览器显示滚动条，无论是否实际剪切了任何内容。 （这可以防止滚动条在内容更改时出现或消失。）打印机仍可能打印溢出的内容。</li>
 <li>auto 取决于用户代理。 如果内容适合填充框内部，则它看起来与可见内容相同，但仍会建立新的块格式化上下文。 如果内容溢出，桌面浏览器会提供滚动条。</li>
 </ul>
-<p>这里重点关注取值 hidden 的定义 <em>如果需要，内容将被剪裁以适合填充框</em> <strong>不提供滚动条</strong>。请记住这一句，<strong>不提供滚动条</strong>，划重点，要考哟。</p>
+<p>这里重点关注取值 hidden 的定义：</p>
+<blockquote>
+  <p><em>如果需要，内容将被剪裁以适合填充框</em> <strong>不提供滚动条</strong>。请记住这一句，<strong>不提供滚动条</strong>，划重点，要考哟。</p>
+</blockquote>
 <p>接下来逐一分析下之前的解决方案为啥正常，为啥不正常。</p>
 <h3 id="1">方案1剖析</h3>
-<p><a href="https://codepen.io/yukap6/pen/MzJwrJ">方案1</a> 为什么能达到目标效果呢？<a href="https://codepen.io/yukap6/pen/MzJwrJ">方案1</a> 里，显示模态框的时候，<code>html</code> 元素只是被添加了 <code>overflow: hidden</code> 属性。讨论该方案为什么可行之前，我们先看另一个简单的例子：一般情况下，如何给块级元素应用 <code>overflow: hidden</code> 属性。</p>
-<p>大家应该都想到了，需要给块级元素设定固定的宽高之后，添加 <code>overflow: hidden</code> 才能真正生效，如下代码示例，也可以打开 <a href="https://codepen.io/yukap6/pen/wQJBJp">Demo</a> 查看</p>
+<p><a href="https://codepen.io/yukap6/pen/MzJwrJ">方案1</a> 为什么能达到目标效果呢？在<a href="https://codepen.io/yukap6/pen/MzJwrJ">方案1</a> 里，显示模态框的时候，<code>html</code> 元素只是被添加了 <code>overflow: hidden</code> 属性。讨论该方案为什么可行之前，我们先看另一个简单的例子：一般情况下，如何给块级元素应用 <code>overflow: hidden</code> 属性。</p>
+<p>大家应该都想到了，需要给块级元素设定固定的宽高之后，添加 <code>overflow: hidden</code> 才能真正生效，如下代码示例（<a href="https://codepen.io/yukap6/pen/wQJBJp">点我查看普通块级元素应用 overflow:hidden Demo</a>）</p>
 <pre><code>{
     width: 100px;
     height: 100px;
     overflow: hidden;
 }
 </code></pre>
-<p>去掉设置的固定宽、高之后，如 <a href="https://codepen.io/yukap6/pen/MzpYGd">Demo</a> 所示，内容会全部显示，<code>overflow: hidden</code> 达不到预期效果。这都容易理解，因为块级元素的 <code>width</code> 和 <code>height</code> 默认值为 <code>auto</code>，也就是根据内容自动调节。但是，我们却可以滚动页面来查看所有内容，这就是同 <a href="https://codepen.io/yukap6/pen/MzJwrJ">方案1</a> 不同的地方。<a href="https://codepen.io/yukap6/pen/MzJwrJ">方案1</a> 里也没有设置 html 元素的宽高，但是滚动条却被隐藏了，是浏览器对 html 元素特殊优待了么？</p>
-<p>答案当然是 NO。线索还是在 [overflow 的定义里]()，如下这段话</p>
+<p>而当不设置固定宽高之后（<a href="https://codepen.io/yukap6/pen/MzpYGd">点我查看不固定宽高 overflow:hidden</a>），内容会全部显示，<code>overflow: hidden</code> 达不到预期效果。这也容易理解，因为块级元素的 <code>width</code> 和 <code>height</code> 默认值为 <code>auto</code>，也就是根据内容自动调节。但是，我们却可以滚动页面来查看所有内容，这就是同 <a href="https://codepen.io/yukap6/pen/MzJwrJ">方案1</a> 不同的地方。<a href="https://codepen.io/yukap6/pen/MzJwrJ">方案1</a> 里也没有设置 html 元素的宽高，但是滚动条却被隐藏了，是浏览器对 html 元素特殊优待了么？</p>
+<p>是，也不是。线索就在 [overflow 的定义]()里的如下一段描述中</p>
 <blockquote>
   <p>UAs must apply the 'overflow' property set on the root element to the viewport. When the root element is an HTML "HTML" element or an XHTML "html" element, and that element has an HTML "BODY" element or an XHTML "body" element as a child, user agents must instead apply the 'overflow' property from the first such child element to the viewport, if the value on the root element is 'visible'. The 'visible' value when used for the viewport must be interpreted as 'auto'. The element from which the value is propagated must have a used value for 'overflow' of 'visible'.</p>
 </blockquote>
-<p>翻译成中文就是：用户终端（一般就是指浏览器）默认给文档根元素 Html/Body 设置 <code>overflow: visible</code> 属性，根元素所有的子元素也都是默认继承 <code>overflow: visible</code> 属性。但是当根元素的子节点内容超过屏幕限制的时候，根元素要表现的像 <code>overflow: auto</code> 的效果一样，也就是必要的时候还得出现滚动条。</p>
+<p>译成中文就是：用户终端（一般就是指浏览器）默认给文档根元素 Html/Body 设置 <code>overflow: visible</code>，所有的子元素也都是默认继承 <code>overflow: visible</code>。但是当子节点内容超过屏幕大小的时候，文档要表现的像 <code>overflow: auto</code> 的效果一样，也就是必要的时候还得出现滚动条。</p>
 <p>问题迎刃而解。</p>
-<p>如 <a href="https://codepen.io/yukap6/pen/MzpYGd">Demo</a> 所示，普通块级元素不固定宽高，只添加 <code>overflow: hidden</code> 的时候，并不能达到 <code>hidden</code> 的效果，而且有滚动条来滚动以查看全部内容。这里的滚动条并不是块级元素本身产生的滚动条，而是浏览器给页面的根元素 Html/Body 提供的滚动条。</p>
+<p>如 <a href="https://codepen.io/yukap6/pen/MzpYGd">点我查看不固定宽高 overflow:hidden</a> 所示，普通块级元素不固定宽高，只添加 <code>overflow: hidden</code> 的时候，并不能达到 <code>hidden</code> 的效果，而且有滚动条来滚动以查看全部内容。这里的滚动条并不是块级元素本身产生的滚动条，而是浏览器给页面的根元素 Html/Body 提供的滚动条。</p>
 <p>而 <a href="https://codepen.io/yukap6/pen/MzJwrJ">方案1</a> 里，之所以没有了滚动条，是因为给 Html 元素添加 <code>overflow: hidden</code> 属性修改了浏览器根元素默认 <code>overflow: visible</code> 的设置以及表现的像 <code>overflow: auto</code> 的效果，从而使根元素 <code>overflow: hidden</code> 生效，而我们还记得，<code>overflow: hidden</code> 的一个要点就是 <strong>不提供滚动条</strong>，所以整个页面背景不再滚动。</p>
 <h3 id="2">方案2剖析</h3>
-<p>同 <a href="https://codepen.io/yukap6/pen/MzJwrJ">方案1</a>，对于 Body 元素的处理实际上和 Html 的处理几乎一致，所以当给 Body 元素添加 <code>overflow: hidden</code> 的属性时，也能达到预期效果，如 <a href="https://codepen.io/yukap6/pen/eQgpJM">方案2</a> 所示。</p>
+<p>同 <a href="https://codepen.io/yukap6/pen/MzJwrJ">方案1</a>大致相同，对于 Body 元素的处理实际上和 Html 的处理几乎一致，所以当给 Body 元素添加 <code>overflow: hidden</code> 的属性时，也能达到预期效果，如 <a href="https://codepen.io/yukap6/pen/eQgpJM">方案2</a> 所示。</p>
 <h3 id="3">方案3剖析</h3>
 <p>方案3里的 <a href="https://codepen.io/yukap6/pen/wQgGjv"><strong>组合1</strong>（正常）</a> 、<a href="https://codepen.io/yukap6/pen/zMNBGa"><strong>组合2</strong>（正常）</a>以及<a href="https://codepen.io/yukap6/pen/NEdNQr"><strong>组合3</strong>（正常）</a>其实都是使用了如下的原理</p>
 <blockquote>
@@ -966,7 +969,7 @@ body {
 }
 </code></pre>
 <p>虽然 html 和 body 元素都设置了宽高值，而且该值就是浏览器的文档可视区域宽高，但并没有出现”回到顶部“的问题。换句话说，就是浏览器仍然可以停留在已滚动到的区域而不重新根据固定宽高来从顶部重新渲染文档，这是因为 html 元素的 <code>overflow</code> 属性并没有被重置，也就是说 html 依然是 <code>overflow: visible</code> 但是表现的像 <code>overflow: auto</code> 的效果，所以文档依然可以表现的是自己已经”滚动“到当前位置，而无需进行裁切隐藏（也就是 <code>overflow: hidden</code>），所要做的只是隐藏掉滚动条而已，因为 body 设置了 <code>overflow: hidden</code>，而 html 元素和 body 元素其实是默认共享了文档顶层滚动条的。</p>
-<p>以 <a href="https://codepen.io/yukap6/pen/MzJwrJ">方案1</a> 、<a href="https://codepen.io/yukap6/pen/eQgpJM">方案2</a> 、<a href="https://codepen.io/yukap6/pen/wQgGjv"><strong>组合1</strong>（正常）</a>、<a href="https://codepen.io/yukap6/pen/zMNBGa"><strong>组合2</strong>（正常）</a>、<a href="https://codepen.io/yukap6/pen/NEdNQr"><strong>组合3</strong>（正常）</a>以及如下代码的正常运行都可以证明这一点：html 元素和 body 元素默认共享了文档顶层滚动条。</p>
+<p>以 <a href="https://codepen.io/yukap6/pen/MzJwrJ">方案1</a> 、<a href="https://codepen.io/yukap6/pen/eQgpJM">方案2</a> 、<a href="https://codepen.io/yukap6/pen/wQgGjv"><strong>组合1</strong>（正常）</a>、<a href="https://codepen.io/yukap6/pen/zMNBGa"><strong>组合2</strong>（正常）</a>、<a href="https://codepen.io/yukap6/pen/NEdNQr"><strong>组合3</strong>（正常）</a>以及如下代码的正常运行都可以证明这一点：html 元素和 body 元素默认共享了文档顶层滚动条，这也就解释了为什么单独给 html 或者 body 添加 <code>overflow: hidden</code> 都会隐藏浏览器级滚动条。</p>
 <pre><code>html {
   width: 100%;
   height: 100%;
@@ -989,7 +992,8 @@ body {
   overflow: hidden;
 }
 </code></pre>
-<p>这就是因为文档的宽高被完全重置为了浏览器文档可视区域的高度，而且，文档根元素的 <code>overflow: hidden</code> 真正生效了，所以浏览器对于 html/body 的渲染同普通块级元素设置了固定宽高并且 <code>overflow: hidden</code> 的效果一样，只显示最顶部可显示内容，也就是我们看到的”回到顶部“效果。其实是浏览器对文档进行了重绘，采用了 <code>overflow: hidden</code> 的效果，裁切掉了溢出的部分，并且不提供滚动条。</p>
+<p>这是因为，文档的宽高被完全重置为了浏览器可视区域的宽高，而且，文档所有根元素 html/body 的 <code>overflow: hidden</code> 同时生效，所以浏览器对于 html/body 的渲染同普通块级元素设置了固定宽高并且 <code>overflow: hidden</code> 的效果一样，只显示最顶部可显示内容，也就是我们看到的”回到顶部“效果。其实是浏览器对文档进行了重绘，采用了 <code>overflow: hidden</code> 的效果，裁切掉了溢出的部分，并且不提供滚动条。</p>
+<p>换句话说就是，html 文档根元素 html、body 只要其中任意一个的 <code>overflow</code> 属性不被重置，那么整个文档就会符合 <code>overflow: visible</code> 的特性，当文档内容溢出时，整个文档又会表现的 像是 <code>overflow: auto</code> 的效果，无论是否设置了 html、body 的宽高。</p>
 <p>就酱。</p>
 <p>（完）</p>
 <p>参考文档</p>
