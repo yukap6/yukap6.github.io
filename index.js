@@ -1,7 +1,8 @@
 // 执行 node ./index.js 将 markdown 文件转换为 html 文件并自动生成 index.html 结构
 const fs = require('fs');
 const path = require('path');
-const showdown  = require('showdown');
+const showdown = require('showdown');
+
 const converter = new showdown.Converter();
 converter.setOption('tables', true);
 const rimraf = require('rimraf');
@@ -23,20 +24,18 @@ if (fs.existsSync(dist)) {
 fs.mkdirSync(dist);
 
 // html 文件生成
-readAndWriteDirSync(src, dist);
+readAndWriteDirSync(src, dist); // eslint-disable-line
 
 // 更新 index.html 内容
 let indexContent = '';
-articles.sort();
-articles.forEach((item, index) => {
+articles.sort((a, b) => -(Number(a.year) - Number(b.year)));
+articles.forEach((item) => {
   if (item && item.length) {
     indexContent += `\n
     <li class="year">\n
       <h2>${item.year}</h2>\n
       <ul class="article-list-of-year">\n`;
-    item.sort((one, next) => {
-      return -(Number(String(one.articleDate.replace(/-/g, ''))) - Number(String(next.articleDate).replace(/-/g, '')));
-    });
+    item.sort((one, next) => -(Number(String(one.articleDate.replace(/-/g, ''))) - Number(String(next.articleDate).replace(/-/g, ''))));
     item.forEach((innerItem) => {
       indexContent += `\
         <li class="article-line">\n
@@ -56,9 +55,9 @@ fs.writeFileSync('index.html', indexHeader + indexContent + indexFooter);
 // 递归遍历 markdown 目录/文件并生成对应的 html
 function readAndWriteDirSync(srcPath, distPath) {
   const paths = fs.readdirSync(srcPath);
-  paths.forEach((ele, index) => {
+  paths.forEach((ele) => {
     const localPath = srcPath + path.sep + ele;
-    const distLocalPath = distPath + path.sep +  ele;
+    const distLocalPath = distPath + path.sep + ele;
     const info = fs.statSync(localPath);
 
     // mac 下 特殊的 .DS_Store 进行删除并忽略
@@ -87,7 +86,7 @@ function readAndWriteDirSync(srcPath, distPath) {
       articles[parentDirName].push({
         fileName: DIST_DIR_NAME + path.sep + parentDirName + path.sep + ele.replace(/.md$/, '.html'),
         articleDate: ele.substr(0, 10),
-        articleTitle: articleTitle,
+        articleTitle,
       });
       fs.writeFileSync(distHtml, fileContent);
     }
