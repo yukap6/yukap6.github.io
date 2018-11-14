@@ -838,7 +838,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 </style>
 </head><body><div class="markdown-body">
 
-<h1 id="htmloverflowhiddenbug">html overflow:hidden 引发页面返回顶部 bug 记录</h1>
+<h1 id="htmloverflowhiddenbug">Html 根元素 overflow:hidden 引发页面返回顶部 bug 记录</h1>
 <h2 id="">问题描述</h2>
 <p>开发模态框组件时，当滚动到页面底部，点击按钮使模态框弹出时，页面”回到了顶部“，<a href="https://codepen.io/yukap6/pen/wQgwbM">点击查看示例</a>。示例中，点击<code>点我显示模态框</code> 按钮即可复现该问题。而正常情况应该是，模态框显示在当前屏幕内容的正上方即可，背景内容不出现滚动，也不”回到顶部“，比如 <a href="https://codepen.io/yukap6/pen/VVPYqr">正常的 Demo</a> 所示（点击 <code>点我显示模态框</code> 按钮即可）。那为什么会出现”回到顶部“的情况呢？</p>
 <h2 id="-1">解决方案</h2>
