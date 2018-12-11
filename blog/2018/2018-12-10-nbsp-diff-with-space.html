@@ -838,13 +838,13 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 </style>
 </head><body><div class="markdown-body">
 
-<h1 id="nbspwordbreakwordwrapwhitespace"><code>&amp;nbsp;</code> 和 普通空格的区别以及它们和 <code>word-break</code> <code>word-wrap</code> <code>white-space</code> 的配合使用</h1>
+<h1 id="nbsp">&amp;nbsp 和 普通空格的区别</h1>
 <p>名字是长了一点，其实要讨论的就是如下2个问题</p>
 <ol>
 <li><code>&amp;nbsp;</code> 和普通空格的区别；</li>
 <li>不同的“空格”和 <code>word-break</code> <code>word-wrap</code> <code>white-space</code>  属性如何配合；</li>
 </ol>
-<h2 id="nbsp"><code>&amp;nbsp;</code> 和普通空格的区别</h2>
+<h2 id="nbsp-1"><code>&amp;nbsp;</code> 和普通空格的区别</h2>
 <h3 id="">普通空格</h3>
 <p>在 HTML 中，W3C 对于普通空格的规定是：默认情况下，<a href="(https://www.w3.org/TR/REC-html40/struct/text.html#h-9.1">多个“非空白字符之间的空格”在浏览器中会被压缩为一个空格显示</a>)。如下代码示例效果（<a href="(https://codepen.io/yukap6/pen/WLbJjq">点击查看效果</a>)）</p>
 <pre><code>// html
@@ -870,7 +870,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 <li>默认情况下，<code>#outer</code> 和 <code>#inner</code> div 脚本之间的大段空白以及为了排版的回车换行（也是属于空白符）是完全被忽略的；（原因是只有非空白字符之间的空白符会被压缩为一个空格显示，<code>#outer</code> 和 <code>#inner</code> 标签之间的空白符是没有被任何非空白字符包裹的）</li>
 <li><code>#span</code> 对应的橘色文字 <code>中间文本</code> 和围绕它的文本之间的空格是被保留了的；（原因是因为 <code>&lt;span&gt;</code> 这个行内元素里面的文本是被外面的非空白字符包裹了的，所以其空白字符被保留为一个来显示）</li>
 </ol>
-<h3 id="nbsp-1"><code>&amp;nbsp;</code></h3>
+<h3 id="nbsp-2"><code>&amp;nbsp;</code></h3>
 <p>定义：nbsp 是 nonbreakable space 的缩写，从字面意思就可以理解， <code>&amp;nbsp;</code> 是不可折断的空白字符，我们称之为空格的实体表示，也就是说 <code>&amp;nbsp;</code> 本质是上是一个字符。</p>
 <p>既然如此，和普通空格的区别就很明确了：<code>&amp;nbsp;</code> 是字符，那么有多少个 <code>&amp;nbsp;</code>，就会显示多少个空格，而不会出现浏览器的默认压缩和忽略问题。</p>
 <h2 id="wordbreakwordwrapwhitespace">空白字符和 <code>word-break</code> <code>word-wrap</code> <code>white-space</code> 的配合使用</h2>
