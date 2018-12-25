@@ -905,7 +905,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 }
 .good {
   white-space: pre-wrap;
-  word-break: keep-all;
+  word-break: break-word;
   word-wrap: break-word;
 }
 </code></pre>
@@ -916,22 +916,11 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 <p>效果2中，因为设置了换行规则如下</p>
 <pre><code>.good {
   white-space: pre-wrap;
-  word-break: keep-all;
-  word-wrap: break-word;
-}
-</code></pre>
-<p>----------- 2018-12-25 修改 start ----------- </p>
-<blockquote>
-  <p>safari 下 <code>word-break: keep-all;</code> 会导致无法换行，暂修复如下</p>
-</blockquote>
-<pre><code>.good {
-  white-space: pre-wrap;
   word-break: break-word;
   word-wrap: break-word;
 }
 </code></pre>
-<p>----------- 2018-12-25 修改 end ----------- </p>
-<p>上面的规则意思是在单词内部默认不折断（<code>word-break: keep-all</code>）; 当内容溢出容器且找不到可以正常换行的位置时可以对单词进行折断（<code>word-wrap: break-word</code>）; 所有的空白字符保留且可以正常换行（<code>white-space: pre-wrap</code>）。所以就出现了单词 <code>away</code> 被强制折断换行的效果了。</p>
+<p>上面的规则意思是在单词内部可能折断（<code>word-break: break-word</code>）; 当内容溢出容器且找不到可以正常换行的位置时可以对单词进行折断（<code>word-wrap: break-word</code>）; 所有的空白字符保留且可以正常换行（<code>white-space: pre-wrap</code>）。所以就出现了单词 <code>away</code> 被强制折断换行的效果了。</p>
 <p>效果3正常显示，因为大家会发现英文单词之间是正常空格连接的，而不是 <code>&amp;nbsp;</code>。因为正常的空格属于可正常换行位置，所以当浏览器发现内容溢出了外部容器的时候，在恰当的位置（空白符位置）进行了换行（soft wrap），文本可以正常显示为一行而无诡异折行，也没有单词的强制折断。</p>
 <p>解决方案找到，如果遇到 <code>&amp;nbsp;</code> 连接的英文长句导致显示异常，可以先正则匹配将 <code>&amp;nbsp;</code> 替换为正常空格后再渲染即可，正则提供如下</p>
 <pre><code>const replaceNbspToSpace = (str = '') =&gt; str.replace(/&amp;nbsp;/g, ' ');
