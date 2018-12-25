@@ -100,6 +100,20 @@ CSS 如下
   word-wrap: break-word;
 }
 ```
+
+----------- 2018-12-25 修改 start ----------- 
+> safari 下 `word-break: keep-all;` 会导致无法换行，暂修复如下
+
+```
+.good {
+  white-space: pre-wrap;
+  word-break: break-word;
+  word-wrap: break-word;
+}
+```
+
+----------- 2018-12-25 修改 end ----------- 
+
 上面的规则意思是在单词内部默认不折断（`word-break: keep-all`）; 当内容溢出容器且找不到可以正常换行的位置时可以对单词进行折断（`word-wrap: break-word`）; 所有的空白字符保留且可以正常换行（`white-space: pre-wrap`）。所以就出现了单词 `away` 被强制折断换行的效果了。
 
 效果3正常显示，因为大家会发现英文单词之间是正常空格连接的，而不是 `&nbsp;`。因为正常的空格属于可正常换行位置，所以当浏览器发现内容溢出了外部容器的时候，在恰当的位置（空白符位置）进行了换行（soft wrap），文本可以正常显示为一行而无诡异折行，也没有单词的强制折断。
