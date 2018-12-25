@@ -26,3 +26,4 @@ new_branch.js
 merge.sh
 sftp-config.json
 benchmarking/
+.vscode/
