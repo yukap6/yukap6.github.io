@@ -839,16 +839,71 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 </style>
 </head><body><div class="markdown-body">
 
-<p>Node.js 调试</p>
+<h1 id="nodejs">Node.js 调试</h1>
+<h2 id="">准备工作</h2>
+<p>环境</p>
+<pre><code>IDE: vsCode Version 1.30.2
+node: v11.6.0
+Operation System: macOS 10.14.2
+</code></pre>
+<p>下文中使用的调试代码如下</p>
+<pre><code>// demo.js
+global.x = 5;
+setTimeout(() =&gt; {
+  debugger;
+  console.log('world');
+}, 10000);
+debugger;
+console.log('hello');
+</code></pre>
+<h2 id="1node">方案1：使用 node 自带命令行工具</h2>
+<p>执行命令 <code>node inspect demo.js</code>，效果如下图所示</p>
+<p><img src="../../images/2019/0124-1.png" alt="" /></p>
 <ul>
-<li>iron-node</li>
-<li>node --inspect + <a href="https://chrome.google.com/webstore/detail/nodejs-v8-inspector/lfnddfpljnhbneopljflpombpnkfhggl">chrome extention: Node.js V8 inspector</a></li>
-<li>node --inspect + chrome-dev-tools 原生</li>
-<li>http://www.ruanyifeng.com/blog/2018/03/node-debugger.html</li>
-<li>node-inspect + chrome://inspect</li>
-<li>node inspect <file.js> 早期</li>
-<li>node-inspect <file.js> 现在</li>
+<li>控制台第一行输出表示 node 进程监听 WebSockets 对应地址为 <code>ws://127.0.0.1:9229/73e0615c-2bb8-4c8d-a31c-fd4dde977318</code>。通过该地址即可连接 node 进程进行调试。</li>
+<li><code>Break on start in file:///Users/jingweirong/Project/Example/httpTest/demo.js:1</code> 表示默认从第一行开始进入断点调试。</li>
 </ul>
-<p>https://nodejs.org/en/docs/guides/debugging-getting-started/</p></div></body>
+<p>命令行下有很多命令来控制调试，以下一步为例，其命令为 <code>next</code> 即可执行到下一步，如下图所示。这种调试模式仅限于调试同步代码，对于定时器或者 <code>HTTP</code> 服务等异步代码则无能为力，更多相关命令请参阅<a href="https://nodejs.org/api/debugger.html">官方文档</a>。</p>
+<p><img src="../../images/2019/0124-2.png" alt="" /></p>
+<p>这种方式由于其局限性，不再深入介绍，执行命令 <code>.exit</code> 退出当前调试状态。</p>
+<h2 id="2">方案2：使用谷歌浏览器开发者工具调试</h2>
+<p>执行命令 <code>node inspect demo.js</code>，此时代码默认进入第一行并自动断点，然后打开 Chrome 浏览器，访问 chrome://inspect，如下所示</p>
+<p><img src="../../images/2019/0124-3.png" alt="" /></p>
+<p>在 Target 一栏可以找到 demo.js 并点击对应的 <code>inspect</code> 链接即可打开 chrome 开发者工具对 demo.js 进行调试，如下图所示</p>
+<p><img src="../../images/2019/0124-4.png" alt="" /></p>
+<p>工具面板中，source 面板是最常访问的面板，所有的资源文件都可以在这里找到，可以像调试普通 <code>js</code> 代码一样打断点或者执行下一步。console 面板和 node 的控制台输出是一致的，所有的 <code>console.log</code> 代码输出都会在 console 面板显示。右下角可以看到变量跟踪，分为 Local 和 Global 两部分，Local 显示所有局部变量，Global 则对应全局变量。右上角则可以控制代码的执行，下一步，继续执行或者进入函数等，和普通网页代码调试并无二致。</p>
+<p>这也是官方推荐的调试方式。</p>
+<p>如上启动调试代码的命令默认为 <code>node inspect demo.js</code>，其实还有另外一种方式就是使用 <code>node-inspect</code> 包。首先安装该包 <code>npm install node-inspect -g</code>，接着执行命令 <code>node-insepect demo.js</code>，效果同上。</p>
+<h2 id="3vscode">方案3：使用 vscode 进行调试</h2>
+<p>首先在 Debug-&gt;Open Configurations（调试-&gt;设置） 将 node 作为首选设置。设置好之后，打开 <code>demo.js</code>，点击 Debugg-&gt;Start Debugging(调试-&gt;开始调试)进入调试状态，效果如下图</p>
+<p><img src="../../images/2019/0124-5.png" alt="" /></p>
+<p>可以看到代码停在了 <code>debugger</code> 那一行。左侧面板有变量跟踪（Local &amp; Global）, CALL STACK（调用栈），中间最顶部是调试常用的下一步、进入代码等常用调试按钮，底部 DEBUG CONSOLE 显示的是当前调试控制台输出，功能极其强大，使用 vscode 作为编辑器的同学使用该方式进行代码调试最方便不过了。</p>
+<p>这里要注意的是，需要调试文件的代码默认是被拷贝到一个叫 <code>debug.js</code> 的文件里执行的，如上图所示。所以当需要调试另外一个文件的代码时，点击 Debug-&gt;Start Debugging(调试-&gt;开始调试)默认会打开 <code>debug.js</code> 进行调试，依旧是上一次调试文件的代码，而不是当前打开文件的代码，此时把需要调试代码拷贝到 <code>debug.js</code> 即可。或者打开 vscode 的 Debug-&gt;Open Configurations(调试-&gt;配置)，增加多一条对于本项目主文件的调试配置如下截图所示</p>
+<p><img src="../../images/2019/0124-6.png" alt="" /></p>
+<p>在上图中，配置了两个文件的调试 <code>demo.js</code> 和 <code>http.js</code>，需要调试对应文件时，选择左上角的下拉列表选择对应文件配置即可进行调试。因为大多数项目的启动文件都为 <code>index.js</code>，所以建议添加如下一段默认配置</p>
+<pre><code>{
+  "type": "node",
+  "request": "launch",
+  "name": "index.js",
+  "program": "${workspaceFolder}/index.js"
+}
+</code></pre>
+<p>其他 IDE 调试都是大同小异的，官方已有提及，这里不再赘述。</p>
+<h2 id="4ironnode">方案4：使用 iron-node 调试</h2>
+<p>安装 iron-node <code>npm install iron-node -g</code>。</p>
+<p>开启调试 <code>iron-node demo.js</code>，效果如下图</p>
+<p><img src="../../images/2019/0124-7.png" alt="" /></p>
+<p>可以看到 iron-node 是依赖 electron 自带了谷歌浏览器的开发者工具，启动调试后会自动打开自带的调试工具。其原理与 <em>方案2：使用谷歌开发者工具调试</em> 是一致的，区别在于 iron-node 把需要手动打开 Chrome 进行调试这一步省略掉了，改为了自动打开并定位到对应调试文件。</p>
+<p>列出的这几种调试方案中，推荐 <em>方案3 使用 vscode 进行调试</em> 或者 <em>方案4 使用 iron-node 调试</em>，这两种方案基本都是一步开启调试，不需要太多额外工作。</p>
+<h2 id="-1">答疑</h2>
+<h3 id="nodeinspectfilename">为什么不是使用 <code>node --inspect &lt;filename&gt;</code> 开启调试呢？</h3>
+<p>简单解释就是：使用这种方式只是打开了调试服务，但代码执行并不会在 <code>debugger</code> 所处行进行自动暂停，而是需要通过 WebSockets 连接 node 进程开启的调试服务之后才能进入调试状态，那么就会存在，开发人员还没打开 chrome://inspect 连接到对应服务时，代码已经执行完毕了，此时就错过了调试代码的时机，关于这个解释阮一峰老师有一篇文章解释的很清晰，<a href="http://www.ruanyifeng.com/blog/2018/03/node-debugger.html">有兴趣的童鞋可以点击前往</a>，因为这种方式非常不常用，所以不再详细展开。</p>
+<p>（完）</p>
+<p>参考链接</p>
+<ul>
+<li>https://nodejs.org/en/docs/guides/debugging-getting-started/</li>
+<li>http://www.ruanyifeng.com/blog/2018/03/node-debugger.html</li>
+<li>https://nodejs.org/api/debugger.html</li>
+</ul></div></body>
 
 </html>
