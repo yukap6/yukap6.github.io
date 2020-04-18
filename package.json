@@ -8,8 +8,6 @@
     "build": "node index.js",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
     "precommit": "lint-staged",
-    "commit": "npx git-cz",
-    "commitmsg": "commitlint -E GIT_PARAMS",
     "version": "npm run changelog && git add CHANGELOG.md",
     "postversion": "git push && git push --tags"
   },
@@ -44,9 +42,9 @@
   "engines": {
     "node": ">=8"
   },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
@@ -54,15 +52,5 @@
       "eslint --fix",
       "git add"
     ]
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ],
-    "rules": {
-      "subject-case": [
-        0
-      ]
-    }
   }
 }

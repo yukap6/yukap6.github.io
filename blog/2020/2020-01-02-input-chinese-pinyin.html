@@ -839,201 +839,97 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 </style>
 </head><body><div class="markdown-body">
 
-<h1 id="">纯前端实现图片压缩 &amp; 方向校正</h1>
-<p><code>web</code> 图片上传一般会遇到以下2个问题：</p>
+<h1 id="reactinput">React 中 Input 组件中文输入实时校验问题</h1>
+<p><img src="http://www.iseeit.cn/wp-content/uploads/2020/04/input.png" alt="" /></p>
+<h2 id="">中文输入场景遇到的问题</h2>
+<p>使用 <code>input</code> 输入框时，如下需求比较常见：</p>
+<ul>
+<li>实时校验用户名合法性；</li>
+<li>实时校验文本输入长度；</li>
+</ul>
+<p>常规做法是监听 <code>onChange</code> 事件，实时校验输入内容。输入英文，正常；但输入中文时，就会出现问题：用户没有完成当前中文输入之前，<code>onChange</code> 事件也会被触发，而实际是希望当前中文输入完成后再进行校验，如图 <code>1-1</code> 所示： </p>
+<p><img src="http://www.iseeit.cn/wp-content/uploads/2020/04/20200418115721.jpg" alt="" />
+1-1 <code>onChange</code> 事件触发了一些无效响应</p>
+<p>如上示例控制台打印所示，前四次 <code>onChange</code> 事件触发时，<code>input</code> 输入框的内容都不是目标内容，那如何才能做到仅在中文输入完成时校验呢？</p>
+<p>答案就是 <code>CompositionEvent</code> 合成事件。</p>
+<h2 id="compositionevent"><code>CompositionEvent</code> 一击必杀</h2>
+<p>顾名思义，合成事件：即一个完整的事件过程由几部分组成。使用拼音输入法输入中文时，常见如下三个事件组合：</p>
 <ol>
-<li>图片太大，需要压缩；</li>
-<li>图片传到服务器之后，不是正的，而是歪的，需要校正。</li>
+<li><code>onCompositionStart</code> 合成事件开始；</li>
+<li><code>onCompositionUpdate</code> 合成事件更新；</li>
+<li><code>onCompositionEnd</code> 合成事件结束；</li>
 </ol>
-<p>OK，一个一个解决。</p>
-<h2 id="-1">图片压缩：解决图片过大的问题</h2>
-<p>纯 <code>JavaScript</code> 实现图片压缩主要依赖 <code>canvas</code> 的能力，其核心原理就是：将较大的图片以较小的尺寸在 <code>canvas</code> 画布上进行重绘。图片宽高缩小之后，生成的像素点更少，就相当于被压缩了，是不是很简单！！</p>
-<p>当然，细心的同学可能会发现一个漏洞，那就是如果宽高缩小到一定程度之后，还是没法达成文件大小的最低要求，而此时不允许再缩小图片宽高尺寸，该怎么办呢？很简单，<code>canvas</code> 的 API 里提供了一个叫 <code>.toBlob()</code> 的方法，可以设置导出的 <code>blob</code> 二进制文件流的质量，取值 <code>0-1</code> 之间，值越大，质量越高，就类似 <code>PS</code> 中导出 <code>JPEG</code> 图片时设置图片质量。如果图片宽高限制了，那就通过调整图片质量参数来压缩图片即可。</p>
-<p>核心代码奉上</p>
-<pre><code>/**
- * 压缩图片至指定大小
- * @param {blob} file 文件对象
- * @param {object} params 压缩文件参数
- * @param {func} cb 成功回调函数，参数为压缩后的二进制文件流
- */
-const LIMIT_SIZE = 0.5 * 1024 * 2014; // 限制大小 500 KB 以内
-let compressCount = 0;
-export const compressImage = (file, cb = () =&gt; {}, params = {
-  width: 1000,
-}) =&gt; {
-  const {
-    width,
-  } = params;
-  const finnalCallBack = (e) =&gt; {
-    console.error('图片压缩出错：', e);
-    cb(file);
-  };
-  try {
-    // 步骤1：通过 FileReader 读取文件内容
-    const fileReader = new FileReader();
-    fileReader.onload = () =&gt; {
-      // 步骤2：将读取到的文件内容转为 Image 对象
-      const img = new Image();
-      img.onload = () =&gt; {
-        try {
-          // 步骤3：对图片进行压缩
-          const canvas = document.createElement('canvas');
-          const context = canvas.getContext('2d');
-          const originWidth = width;
-          const originHeight = originWidth / (img.width / img.height);
-          canvas.width = originWidth;
-          canvas.height = originHeight;
-          context.drawImage(img, 0, 0, originWidth, originHeight);
-          canvas.toBlob((blob) =&gt; {
-            // 步骤4：将压缩后的图片导出为二进制文件流
-            if (blob.size &gt; LIMIT_SIZE) {
-              // 图片大小未达标，则继续压缩
-              compressCount += 1;
-              compressImage(blob, cb);
-            } else {
-              compressCount = 0;
-              cb(blob);
-            }
-          }, 'image/jpeg', 0.9 - (compressCount * 0.1)); // 第三个参数控制图片质量
-        } catch (e) {
-          finnalCallBack(e);
-        }
-      };
-      img.src = fileReader.result;
-    };
-    fileReader.onerror = (e) =&gt; {
-      finnalCallBack(e);
-    };
-    fileReader.readAsDataURL(file);
-  } catch (e) {
-    finnalCallBack(e);
-  }
-};
-</code></pre>
-<p>这个方法要注意的是：图片文件需要在 <code>onload</code> 之后执行下一步的绘制动作，否则会出现空白渲染的情况。</p>
-<h2 id="-2">图片方向校正：处理图片“歪倒”的情况</h2>
-<p>相机拍摄照片时，可能会出现以下四种拍照方位，拍出来的照片方向参数各不一样，取值分别是 <code>1</code>、<code>8</code>、<code>3</code> 和 <code>6</code>。</p>
-<p><img src="http://www.iseeit.cn/wp-content/uploads/2019/12/orientation.gif" alt="" />
-图 2-0</p>
-<p>此时，图片被原封不动上传之后，就可能会出现“歪着”的情况。所以，在文件上传之前，需要先对图片进行方向校正，然后再上传。</p>
-<p><strong>三步走</strong>：</p>
-<ol>
-<li>获取到图片的方位 <code>orientation</code> 信息，四个方位分别对应 <code>1</code>, <code>3</code>, <code>6</code>, <code>8</code>，如图 2-0 所示；</li>
-<li>在 <code>canvas</code> 画布上绘制图片之前，先校正方位，再进行绘制；</li>
-<li>将 <code>canvas</code> 画布上绘制的正过来的图片导出为 <code>blob</code> 数据格式（二进制文件流）；</li>
-</ol>
-<p>完整代码奉上</p>
-<pre><code>/**
- * 压缩图片至指定大小
- * @param {blob} file 文件对象
- * @param {object} params 压缩文件参数
- * @param {func} cb 成功回调函数，参数: 二进制文件流
- */
-import exif from 'exif-js';
+<p>针对 <code>1-1</code> 示例问题，解决方案就是，将 <code>onChange</code> 事件和 <code>onCompositionEnd</code> 组合起来使用，解决中文输入实时监听问题。 当输入中文时 <code>onCompositionEnd</code> 会在当前中文输入完成后触发，这就解决了 <code>onChange</code> 不能解决的问题，效果图如下 <code>2-1</code>。</p>
+<p><img src="http://www.iseeit.cn/wp-content/uploads/2020/04/20200418142218.jpg" alt="" />
+2-1 <code>composition</code> 事件</p>
+<p>输入非中文 <code>77</code> 时，实时响应；输入中文 <code>奋发图强</code>的时候，仅在当前中文输入完成后触发响应。</p>
+<p>完整代码如下：</p>
+<pre><code>import React from 'react';
 
-let compressCount = 0;
-export const compressImage = (file, cb = () =&gt; {}, params = {
-  width: 1000,
-}) =&gt; {
+let isOnComposition = false;
+const isChrome = !!window.chrome;
+
+const inputCheckLogic = (v) =&gt; {
+  console.log(v);
+};
+
+const handleComposition = (e) =&gt; {
   const {
-    width,
-  } = params;
-  const finnalCallBack = (e) =&gt; {
-    console.error('图片压缩出错：', e); // eslint-disable-line
-    cb(file);
-  };
-  try {
-    exif.getData(file, () =&gt; {
-      try {
-        const orientation = exif.getTag(file, 'Orientation') || 1;
-        const fileReader = new FileReader();
-        fileReader.onload = () =&gt; {
-          const img = new Image();
-          img.onload = () =&gt; {
-            try {
-              const canvas = document.createElement('canvas');
-              const context = canvas.getContext('2d');
-              const originWidth = width;
-              const originHeight = originWidth / (img.width / img.height);
-              canvas.width = originWidth;
-              canvas.height = originHeight;
-              // debugger; //eslint-disable-line
-              let angle = 0; // 旋转角度
-              switch (Number(orientation)) {
-                case 1:
-                  // 0°，不旋转
-                  break;
-                case 6:
-                  // 逆时针90°，需要顺时针旋转90°
-                  angle = (90 * Math.PI) / 180;
-                  canvas.width = originHeight;
-                  canvas.height = originWidth;
-                  context.rotate(angle);
-                  context.translate(0, -canvas.width);
-                  break;
-                case 8:
-                  // 顺时针90°，需要顺时针旋转270°
-                  angle = (270 * Math.PI) / 180;
-                  canvas.width = originHeight;
-                  canvas.height = originWidth;
-                  context.rotate(angle);
-                  context.translate(-canvas.height, 0);
-                  break;
-                case 3:
-                  // 顺时针180°，需要顺时针旋转180°
-                  angle = (180 * Math.PI) / 180;
-                  canvas.width = originWidth;
-                  canvas.height = originHeight;
-                  context.rotate(angle);
-                  context.translate(-canvas.width, -canvas.height);
-                  break;
-                default:
-              }
-              context.drawImage(img, 0, 0, originWidth, originHeight);
-              context.setTransform(1, 0, 0, 1, 0, 0);
-              canvas.toBlob((blob) =&gt; {
-                if (blob.size &gt; LIMIT_SIZE) {
-                  compressCount += 1;
-                  compressImage(blob, cb);
-                } else {
-                  compressCount = 0;
-                  cb(blob);
-                }
-              }, 'image/jpeg', 0.9 - (compressCount * 0.1));
-            } catch (e) {
-              finnalCallBack(e);
-            }
-          };
-          img.src = fileReader.result;
-        };
-        fileReader.onerror = (e) =&gt; {
-          finnalCallBack(e);
-        };
-        fileReader.readAsDataURL(file);
-      } catch (e) {
-        finnalCallBack(e);
-      }
-    });
-  } catch (e) {
-    finnalCallBack(e);
+    type,
+    currentTarget: {
+      value,
+    },
+  } = e;
+  if (type === 'compositionend') {
+    /**
+     * 合成事件结束，可以触发输入实时校验
+     * 这里多做一次针对 chrome 的逻辑是因为 chrome 中
+     * `compositionend` 事件在 `onChange` 事件之后触发
+     */
+    isOnComposition = false;
+    if (e.currentTarget instanceof HTMLInputElement &amp;&amp; !isOnComposition &amp;&amp; isChrome) {
+      inputCheckLogic(value);
+    }
+  } else {
+    // 合成事件进行时
+    isOnComposition = true;
   }
 };
+
+const handleChange = (e) =&gt; {
+  const {
+    currentTarget: {
+      value,
+    },
+  } = e;
+  /**
+   * 非合成事件，可以触发输入实时校验
+   */
+  if (e.currentTarget instanceof HTMLInputElement &amp;&amp; !isOnComposition) {
+    inputCheckLogic(value);
+  }
+};
+
+function Demo() {
+  return (
+    &lt;div&gt;
+      &lt;input
+        onCompositionStart={handleComposition}
+        onCompositionUpdate={handleComposition}
+        onCompositionEnd={handleComposition}
+        onChange={handleChange}
+      /&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default Demo;
 </code></pre>
-<p><strong>代码解读</strong></p>
-<ol>
-<li>首先，依赖三方库 <a href="https://github.com/exif-js/exif-js"><code>exif-js</code></a> 获取到图片的方位信息 <code>orientation</code>；</li>
-<li>其次，重点关注 <code>switch case</code> 部分代码，对图片方位进行校正；</li>
-<li>最后，依赖 <code>canvas</code> 画布的 <code>toBlob()</code> <code>API</code> 将绘制的图片导出为 <code>blob</code> 数据并返回；</li>
-</ol>
-<p>这里几个细节问题需要说明一下：</p>
-<ol>
-<li><p>为啥照片在手机上看到是正的，上传之后就是“歪”着的呢？
-答：相机拍照时，图片本身的元信息里是有 <code>orientation</code> 信息的，即方位信息，此时，手机上显示时，都是系统默认对图片进行过旋转校正之后的。</p></li>
-<li><p>图片递归压缩的过程中，会无限调整图片方位么？
-答：不会。如果图片方位不是 <code>1</code>，则第一次校正之后，图片就已经是正的了。即使后续继续递归压缩图片大小，后续的 <code>orientation</code> 信息都是 <code>1</code>。</p></li>
-<li><p>图片方位校正代码看的云里雾里，原理到底是啥呢？
-答：图片本身的方位是不会变化的，变化的只是 <code>canvas</code> 画布绘制图片时的坐标系。简单来讲就是，根据图片的 <code>orientation</code> 方位信息，将 <code>canvas</code> 的坐标系旋转调整到可以使图片显示为 “正” 的情况下，再对图片进行绘制。至于 <code>canvas</code> 坐标系的相关解释，同学们可以在上一篇 <a href="http://www.iseeit.cn/index.php/2019/12/12/canvas-coordinate/">借助图片旋转理解 canvas 坐标系</a> 中详细查看。</p></li>
-</ol>
-<p>（完）</p></div></body>
+<p>如上核心思路就是：</p>
+<ul>
+<li>普通的 <code>onChange</code> 事件直接触发校验逻辑；</li>
+<li>输入中文时，仅在输入完成后触发校验逻辑；</li>
+</ul>
+<p>以上。</p></div></body>
 
 </html>
