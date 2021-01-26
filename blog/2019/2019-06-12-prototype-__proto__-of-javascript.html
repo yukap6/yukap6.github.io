@@ -850,7 +850,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   <p>如果读者想更详细的了解原型和原型链的定义，可以先行阅读<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Inheritance_and_the_prototype_chain">官方文档</a>。</p>
 </blockquote>
 <p>JavaScript 的原型和原型链到底是怎么运作的呢？且看下图分解。图有点复杂不想看了？不用担心，注意到图中有6个带数字的绿色小圈没？是的，只需要跟着作者来了解一下这6个数字对应的箭头线条表达的概念，你将豁然开朗。</p>
-<p><img src="http://www.iseb.cc/wp-content/uploads/2019/06/原型、原型链.png" alt="" /></p>
+<p><img src="http://www.iseeit.cn/wp-content/uploads/2019/06/原型、原型链.png" alt="" /></p>
 <h2 id="1function">1. 第一条箭头线段，顶级函数对象 <code>Function</code> 的原型链</h2>
 <p>这条线段表示顶级对象 <code>Function</code> 自己继承了自己。哈？自己继承自己？是的，你没看错！因为顺着 <code>Function</code> 的原型链 <code>Function.__proto__</code> 向上查找会发现，<code>Function.__proto__</code> 和 <code>Function.prototype</code> 是完全相等的，用代码表示即为：</p>
 <pre><code>Function.__proto__ === Function.prototype; // true

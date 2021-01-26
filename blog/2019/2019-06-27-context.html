@@ -840,7 +840,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 </head><body><div class="markdown-body">
 
 <h1 id="contextthis">上下文（context）—— <code>this</code></h1>
-<p><img src="http://www.iseb.cc/wp-content/uploads/2019/07/try-this.gif" alt="" /></p>
+<p><img src="http://www.iseeit.cn/wp-content/uploads/2019/07/try-this.gif" alt="" /></p>
 <p>JavaScript 的上下文（context）即 <code>this</code> 对象，表示当前执行代码的环境对象。由于 <code>this</code> 对象的不固定，且可以在代码执行阶段动态变化，常常会令初学者困惑。本文的目的旨在运用<strong>就近原则</strong>（自己 YY 创造的概念，且看下文）来解释清楚这个问题。</p>
 <blockquote>
   <p>为了方便描述，统一用 <code>this</code> 来指代上下文（context），因为上下文就是 <code>this</code>。</p>
@@ -940,7 +940,7 @@ obj.p() === window; // true
     // 这里的 this 只有在 foo 函数被执行时才会真正绑定，也就是箭头函数 x 被创建时，
     // 只要 foo 函数的代码不被执行，
     // 箭头函数 x 仍然只是定义在代码里，但一直未被创建，也就无所谓绑定
-    var x = () =&gt; this; 
+    var x = () =&gt; this;
     return x;
   }
 };
@@ -957,7 +957,7 @@ var obj2 = {
 obj2.test() === obj; // true，无论箭头函数在何处调用，其创建时的 this 不再改变
 </code></pre>
 <p>接上，一个更有趣的栗子🌰：</p>
-<pre><code>// 注意此时只是把函数 foo 赋值给了变量 fn2, 
+<pre><code>// 注意此时只是把函数 foo 赋值给了变量 fn2,
 // 函数 foo 的代码并没有被执行，所以，其内部的箭头函数 x 依然未被创建，
 // 也就不存在绑定 this，只有当 fn2 执行时，才会发生 this 绑定
 var fn2 = obj.foo;

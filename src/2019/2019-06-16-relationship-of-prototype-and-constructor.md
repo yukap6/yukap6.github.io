@@ -16,7 +16,7 @@ F.prototype.constructor === F; // true
 
 上图......(拉好长的音，像不像上朝......😀)
 
-![](http://www.iseb.cc/wp-content/uploads/2019/06/prototype-和-prototype.constructor-的关系.png)
+![](http://www.iseeit.cn/wp-content/uploads/2019/06/prototype-和-prototype.constructor-的关系.png)
 
 ## 1. 默认情况下，函数的原型对象 `prototype` 并不是函数的实例
 

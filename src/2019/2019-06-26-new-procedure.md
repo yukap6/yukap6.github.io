@@ -1,6 +1,6 @@
 # `new` 操作符执行了哪些操作？
 
-![](http://www.iseb.cc/wp-content/uploads/2019/06/new.jpg)
+![](http://www.iseeit.cn/wp-content/uploads/2019/06/new.jpg)
 
 > [MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new)：`new` 运算符创建一个用户定义的对象类型的实例或具有构造函数的内置对象的实例。`new` 关键字会进行如下的操作：
 > 1. 创建一个空的简单 JavaScript 对象（即`{}`）；

@@ -104,7 +104,7 @@ gradefather();
 
 用图片来描述作用域链会看的更清晰一些：
 
-![](http://www.iseb.cc/wp-content/uploads/2019/06/scope-scopechain.png)
+![](http://www.iseeit.cn/wp-content/uploads/2019/06/scope-scopechain.png)
 
 ## 总结
 

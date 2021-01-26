@@ -2,7 +2,7 @@
 
 看图，说话 👻
 
-![](http://www.iseb.cc/wp-content/uploads/2019/06/WX20190624-173203@2x.png)
+![](http://www.iseeit.cn/wp-content/uploads/2019/06/WX20190624-173203@2x.png)
 
 示例代码
 

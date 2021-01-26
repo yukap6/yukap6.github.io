@@ -23,7 +23,7 @@
 
 先上结论（下图）
 
-![](http://www.iseb.cc/wp-content/uploads/2019/06/var-let-and-const.png)
+![](http://www.iseeit.cn/wp-content/uploads/2019/06/var-let-and-const.png)
 
 
 有疑惑？且看代码推理。
